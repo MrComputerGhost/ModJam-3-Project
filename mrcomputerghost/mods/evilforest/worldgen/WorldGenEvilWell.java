@@ -19,6 +19,7 @@ public class WorldGenEvilWell extends WorldGenerator
 
         if (l != Block.grass.blockID)
         
+        	
         {
             return false;
         }
