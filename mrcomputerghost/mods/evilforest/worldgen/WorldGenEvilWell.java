@@ -17,7 +17,8 @@ public class WorldGenEvilWell extends WorldGenerator
 
         int l = par1World.getBlockId(par3, par4, par5);
 
-        if (l != Block.dirt.blockID)
+        if (l != Block.grass.blockID)
+        
         {
             return false;
         }
