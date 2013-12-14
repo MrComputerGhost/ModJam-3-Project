@@ -19,7 +19,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeGenEvilForest extends BiomeGenBase
 {
-    private WorldGenFlowers mushroomBrownGen;
+    
 
 	public BiomeGenEvilForest(int par1)
     {
@@ -35,7 +35,7 @@ public class BiomeGenEvilForest extends BiomeGenBase
         this.theBiomeDecorator.reedsPerChunk = 10;
         this.theBiomeDecorator.clayPerChunk = 5;
         this.theBiomeDecorator.waterlilyPerChunk = 6;
-        this.mushroomBrownGen = new WorldGenFlowers(Block.pumpkin.blockID);
+        this.canSpawnLightningBolt();
         this.waterColorMultiplier = 15745542;
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 5, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 5, 4, 4));
