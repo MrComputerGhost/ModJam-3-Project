@@ -10,10 +10,10 @@ public class WorldGenEvilForest1 extends WorldGenerator
 {
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
-        int l = par2Random.nextInt(7) + 7;
-        int i1 = l - par2Random.nextInt(2) - 3;
+        int l = par2Random.nextInt(5) + 7;
+        int i1 = l - par2Random.nextInt(1) - 3;
         int j1 = l - i1;
-        int k1 = 1 + par2Random.nextInt(j1 + 1);
+        int k1 = 1 + par2Random.nextInt(j1 + 4);
         boolean flag = true;
 
         if (par4 >= 1 && par4 + l + 1 <= 128)
