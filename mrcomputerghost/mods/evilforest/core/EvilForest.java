@@ -2,8 +2,11 @@ package mrcomputerghost.mods.evilforest.core;
 
 import mrcomputerghost.mods.evilforest.biomes.BiomeGenEvilForest;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathLeaves;
+import mrcomputerghost.mods.evilforest.blocks.BlockDeathPlanks;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathWood;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -23,6 +26,8 @@ public class EvilForest
 	//Blocks
 	public static Block DeathWood;
 	public static Block DeathLeaves;
+	public static Block DeathPlanks;
+	public static Block DeadGrass;
 	
 	//Biomes
 	public static BiomeGenBase EvilForestBiome;
@@ -37,17 +42,62 @@ public class EvilForest
 		EvilForestBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("EvilForest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
 		
 		//Blocks
-		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
-		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundClothFootstep).setResistance(0.0F);
+		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
+		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
+		DeathPlanks = new BlockDeathPlanks(4044, "DeathPlanks").setUnlocalizedName("DeathPlanks").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
 		
 		//Registering
 		GameRegistry.addBiome(EvilForestBiome);
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
+		GameRegistry.registerBlock(DeathPlanks, "DeathPlanks");
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
+		LanguageRegistry.addName(DeathPlanks, "Death Planks");
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(EvilForest.DeathPlanks, 4), new Object[]
+				{
+						new ItemStack(EvilForest.DeathWood)
+				});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.stick, 4), new Object[]
+				{
+						new ItemStack(EvilForest.DeathPlanks), new ItemStack(EvilForest.DeathPlanks)
+				});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.workbench), new Object[]
+				{
+						new ItemStack(EvilForest.DeathPlanks), new ItemStack(EvilForest.DeathPlanks), new ItemStack(EvilForest.DeathPlanks), new ItemStack(EvilForest.DeathPlanks)
+				});
+		
+		GameRegistry.addRecipe(new ItemStack(Item.swordWood, 1),new Object[]
+                {
+                        "0L0", "0L0", "0S0", 'L', EvilForest.DeathPlanks, 'S', Item.stick
+                });
+		GameRegistry.addRecipe(new ItemStack(Item.pickaxeWood, 1),new Object[]
+                {
+                        "LLL", "0S0", "0S0", 'L', EvilForest.DeathPlanks, 'S', Item.stick
+                });
+		GameRegistry.addRecipe(new ItemStack(Item.shovelWood, 1),new Object[]
+                {
+                        "0L0", "0S0", "0S0", 'L', EvilForest.DeathPlanks, 'S', Item.stick
+                });
+		GameRegistry.addRecipe(new ItemStack(Item.axeWood, 1),new Object[]
+                {
+                        "0LL", "0SL", "0S0", 'L', EvilForest.DeathPlanks, 'S', Item.stick
+                });
+		GameRegistry.addRecipe(new ItemStack(Item.hoeWood, 1),new Object[]
+                {
+                        "0LL", "0S0", "0S0", 'L', EvilForest.DeathPlanks, 'S', Item.stick
+                });
+		GameRegistry.addRecipe(new ItemStack(Block.chest), new Object[]
+				{
+						"WWW", "W0W", "WWW", 'W', EvilForest.DeathPlanks
+				});
+		
+		
 		
 	}
 	
