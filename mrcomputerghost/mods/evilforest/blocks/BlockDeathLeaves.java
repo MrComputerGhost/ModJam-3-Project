@@ -11,10 +11,10 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockDeathWood extends Block
+public class BlockDeathLeaves extends Block
 {
 
-	public BlockDeathWood(int par1, String texture) 
+	public BlockDeathLeaves(int par1, String texture) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
@@ -31,7 +31,12 @@ public class BlockDeathWood extends Block
 
     public void registerIcons(IconRegister reg) 
     {
-            this.blockIcon = reg.registerIcon("ef:death_wood"); 
+            this.blockIcon = reg.registerIcon("ef:leaves_death"); 
+    }
+    
+    public boolean isOpaqueCube()
+    {
+        return false;
     }
 	
 	/**

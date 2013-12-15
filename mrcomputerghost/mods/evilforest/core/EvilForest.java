@@ -1,7 +1,8 @@
 package mrcomputerghost.mods.evilforest.core;
 
 import mrcomputerghost.mods.evilforest.biomes.BiomeGenEvilForest;
-//import mrcomputerghost.mods.evilforest.blocks.BlockDeathWood;
+import mrcomputerghost.mods.evilforest.blocks.BlockDeathLeaves;
+import mrcomputerghost.mods.evilforest.blocks.BlockDeathWood;
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.Mod;
@@ -21,11 +22,11 @@ public class EvilForest
 
 	//Blocks
 	public static Block DeathWood;
-	
+	public static Block DeathLeaves;
 	
 	//Biomes
 	public static BiomeGenBase EvilForestBiome;
-	
+		
 	
 	
 	@EventHandler
@@ -36,15 +37,17 @@ public class EvilForest
 		EvilForestBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("EvilForest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
 		
 		//Blocks
-		//DeathWood = new BlockDeathWood(5947, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
-		
+		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
+		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundClothFootstep).setResistance(0.0F);
 		
 		//Registering
 		GameRegistry.addBiome(EvilForestBiome);
 		
-		//GameRegistry.registerBlock(DeathWood, "DeathWood");
+		GameRegistry.registerBlock(DeathWood, "DeathWood");
+		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
 		
-		//LanguageRegistry.addName(DeathWood, "Death Log");
+		LanguageRegistry.addName(DeathWood, "Death Log");
+		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
 		
 	}
 	

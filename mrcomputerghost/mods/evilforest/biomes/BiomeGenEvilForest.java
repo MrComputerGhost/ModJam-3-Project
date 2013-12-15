@@ -1,31 +1,35 @@
 package mrcomputerghost.mods.evilforest.biomes;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import java.util.Random;
 
 import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilForest1;
 import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilWell;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
-import net.minecraft.world.gen.feature.WorldGenDesertWells;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BiomeGenEvilForest extends BiomeGenBase
 {
     
 
+	private WorldGenMinable theWorldGenerator;
+
 	public BiomeGenEvilForest(int par1)
     {
+		
         super(par1);
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
@@ -39,10 +43,16 @@ public class BiomeGenEvilForest extends BiomeGenBase
         this.theBiomeDecorator.clayPerChunk = 5;
         this.theBiomeDecorator.waterlilyPerChunk = 6;
         this.waterColorMultiplier = 15745542;
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 5, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 15, 5, 5));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 5, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityBat.class, 15, 5, 5));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 5, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityChicken.class, 25, 5, 5));
         this.canSpawnLightningBolt();
+        this.theWorldGenerator = new WorldGenMinable(Block.silverfish.blockID, 8);
+        this.theWorldGenerator = new WorldGenMinable(Block.pumpkin.blockID, 8);
+       
     }
 
     /**
