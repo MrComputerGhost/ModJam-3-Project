@@ -7,8 +7,10 @@ import mrcomputerghost.mods.evilforest.core.EvilForest;
 import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilForest1;
 import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilWell;
 import net.minecraft.block.Block;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityBat;
@@ -33,18 +35,18 @@ public class BiomeGenEvilForest extends BiomeGenBase
     {
 		
         super(par1);
-        this.topBlock = (byte)Block.dirt.blockID;
+        this.topBlock = (byte)Block.grass.blockID;
         this.fillerBlock = (byte)Block.stone.blockID;
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
-        this.theBiomeDecorator.treesPerChunk = 62;
-        this.theBiomeDecorator.flowersPerChunk = -999;
+        this.theBiomeDecorator.treesPerChunk = 42;
+        this.theBiomeDecorator.flowersPerChunk = -1;
         this.theBiomeDecorator.deadBushPerChunk = 1;
-        this.theBiomeDecorator.mushroomsPerChunk = 87;
+        this.theBiomeDecorator.mushroomsPerChunk = 89;
         this.theBiomeDecorator.reedsPerChunk = 10;
-        this.theBiomeDecorator.clayPerChunk = 5;
+        this.theBiomeDecorator.clayPerChunk = 15;
         this.theBiomeDecorator.waterlilyPerChunk = 6;
         this.waterColorMultiplier = 15745542;
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 15, 5, 5));
@@ -53,6 +55,7 @@ public class BiomeGenEvilForest extends BiomeGenBase
         this.spawnableMonsterList.add(new SpawnListEntry(EntityBat.class, 15, 5, 5));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 5, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityChicken.class, 5, 5, 5));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 3, 1, 1));
         this.theWorldGenerator = new WorldGenMinable(Block.silverfish.blockID, 25);
         this.theWorldGenerator = new WorldGenMinable(Block.pumpkin.blockID, 15);
         this.theWorldGenerator = new WorldGenMinable(Block.oreGold.blockID, 10);
