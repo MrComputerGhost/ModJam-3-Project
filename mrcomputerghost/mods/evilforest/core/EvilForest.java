@@ -1,6 +1,7 @@
 package mrcomputerghost.mods.evilforest.core;
 
 import mrcomputerghost.mods.evilforest.biomes.BiomeGenEvilForest;
+import mrcomputerghost.mods.evilforest.blocks.BlockDeadGrass;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathLeaves;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathPlanks;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathWood;
@@ -31,6 +32,7 @@ public class EvilForest
 	
 	//Biomes
 	public static BiomeGenBase EvilForestBiome;
+	//public static BiomeGenBase EvilForestHills;
 		
 	
 	
@@ -38,24 +40,34 @@ public class EvilForest
 	public void load(FMLInitializationEvent event)
 	{
 		
-		//Biomes
-		EvilForestBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("EvilForest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
-		
+
 		//Blocks
 		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
 		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
 		DeathPlanks = new BlockDeathPlanks(4044, "DeathPlanks").setUnlocalizedName("DeathPlanks").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
+		DeadGrass = new BlockDeadGrass(4045, "DeadGrass").setUnlocalizedName("DeadGrass").setHardness(1.0F).setStepSound(Block.soundGrassFootstep).setResistance(0.0F);
+		
+		//Biomes
+		EvilForestBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("EvilForest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
+		//EvilForestHills = new BiomeGenEvilForest(43).setColor(616363).setBiomeName("EvilForestHills").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.3F).setDisableRain();
+		
 		
 		//Registering
-		GameRegistry.addBiome(EvilForestBiome);
 		
+
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
 		GameRegistry.registerBlock(DeathPlanks, "DeathPlanks");
+		GameRegistry.registerBlock(DeadGrass, "DeadGrass");
+		
+		GameRegistry.addBiome(EvilForestBiome);
+		//GameRegistry.addBiome(EvilForestHills);
+		
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
 		LanguageRegistry.addName(DeathPlanks, "Death Planks");
+		LanguageRegistry.addName(DeadGrass, "Dead Grass");
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(EvilForest.DeathPlanks, 4), new Object[]
 				{

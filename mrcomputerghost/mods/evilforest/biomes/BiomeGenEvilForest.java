@@ -2,6 +2,8 @@ package mrcomputerghost.mods.evilforest.biomes;
 
 import java.util.Random;
 
+import mrcomputerghost.mods.evilforest.blocks.BlockDeadGrass;
+import mrcomputerghost.mods.evilforest.core.EvilForest;
 import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilForest1;
 import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilWell;
 import net.minecraft.block.Block;
@@ -25,12 +27,14 @@ public class BiomeGenEvilForest extends BiomeGenBase
 {
     
 
-	private WorldGenMinable theWorldGenerator;
+	public WorldGenMinable theWorldGenerator;
 
 	public BiomeGenEvilForest(int par1)
     {
 		
         super(par1);
+        this.topBlock = (byte)Block.dirt.blockID;
+        this.fillerBlock = (byte)Block.stone.blockID;
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
@@ -49,14 +53,12 @@ public class BiomeGenEvilForest extends BiomeGenBase
         this.spawnableMonsterList.add(new SpawnListEntry(EntityBat.class, 15, 5, 5));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 5, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityChicken.class, 5, 5, 5));
-        this.canSpawnLightningBolt();
         this.theWorldGenerator = new WorldGenMinable(Block.silverfish.blockID, 25);
         this.theWorldGenerator = new WorldGenMinable(Block.pumpkin.blockID, 15);
         this.theWorldGenerator = new WorldGenMinable(Block.oreGold.blockID, 10);
         this.theWorldGenerator = new WorldGenMinable(Block.oreLapis.blockID, 10);
         this.theWorldGenerator = new WorldGenMinable(Block.oreEmerald.blockID, 10);
-        this.theWorldGenerator = new WorldGenMinable(Block.fence.blockID, 10);
-        this.theWorldGenerator = new WorldGenMinable(Block.redstoneLampIdle.blockID, 2);
+
         
         
     }
