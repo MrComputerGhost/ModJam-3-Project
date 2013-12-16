@@ -5,10 +5,14 @@ import mrcomputerghost.mods.evilforest.blocks.BlockDeadGrass;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathLeaves;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathPlanks;
 import mrcomputerghost.mods.evilforest.blocks.BlockDeathWood;
+import mrcomputerghost.mods.evilforest.items.ItemDeathArmor;
 import net.minecraft.block.Block;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.src.ModLoader;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.EnumHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -30,10 +34,18 @@ public class EvilForest
 	public static Block DeathPlanks;
 	public static Block DeadGrass;
 	
+	//Items
+	public static Item DeathHelm;
+	public static Item DeathChest;
+	public static Item DeathLegs;
+	public static Item DeathBoots;
+	
 	//Biomes
 	public static BiomeGenBase EvilForestBiome;
 	//public static BiomeGenBase EvilForestHills;
 		
+	//Enums
+	public static final EnumArmorMaterial EnumArmorMaterialDeath = EnumHelper.addArmorMaterial("DeathARMOR", 33, new int[]{3, 8, 6, 3}, 10);
 	
 	
 	@EventHandler
@@ -41,6 +53,12 @@ public class EvilForest
 	{
 		
 
+		//Armor
+		DeathHelm = new ItemDeathArmor(9026, EnumArmorMaterialDeath, ModLoader.addArmor("Death"), 0).setUnlocalizedName("DeathHelmet");
+		DeathChest = new ItemDeathArmor(9026, EnumArmorMaterialDeath, ModLoader.addArmor("Death"), 1).setUnlocalizedName("DeathChest");
+		DeathLegs = new ItemDeathArmor(9026, EnumArmorMaterialDeath, ModLoader.addArmor("Death"), 3).setUnlocalizedName("DeathHelmet");
+		DeathBoots = new ItemDeathArmor(9026, EnumArmorMaterialDeath, ModLoader.addArmor("Death"), 4).setUnlocalizedName("Death Helmet");
+		
 		//Blocks
 		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
 		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
