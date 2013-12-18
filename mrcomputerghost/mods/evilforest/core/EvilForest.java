@@ -73,7 +73,7 @@ public class EvilForest
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
 		LanguageRegistry.addName(DeathPlanks, "Death Planks");
-		LanguageRegistry.addName(DeadGrass, "Dead Grass");
+		//LanguageRegistry.addName(DeadGrass, "Dead Grass");
 		LanguageRegistry.addName(ThornShrub, "Thorn Shrub");
 		
 		//Hooks
