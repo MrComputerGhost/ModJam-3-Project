@@ -1,32 +1,32 @@
-package mrcomputerghost.mods.evilforest.core;
+package common.mrcomputerghost.evilforest.core;
 
-import mrcomputerghost.mods.evilforest.biomes.BiomeGenEvilForest;
-import mrcomputerghost.mods.evilforest.biomes.BiomeGenThorns;
-import mrcomputerghost.mods.evilforest.biomes.BiomeGenWasted;
-import mrcomputerghost.mods.evilforest.blocks.BlockDeadGrass;
-import mrcomputerghost.mods.evilforest.blocks.BlockDeathLeaves;
-import mrcomputerghost.mods.evilforest.blocks.BlockDeathPlanks;
-import mrcomputerghost.mods.evilforest.blocks.BlockDeathWood;
-import mrcomputerghost.mods.evilforest.blocks.BlockThornShrub;
+import common.mrcomputerghost.evilforest.biomes.BiomeGenEvilForest;
+import common.mrcomputerghost.evilforest.biomes.BiomeGenThorns;
+import common.mrcomputerghost.evilforest.blocks.BlockDeathLeaves;
+import common.mrcomputerghost.evilforest.blocks.BlockDeathPlanks;
+import common.mrcomputerghost.evilforest.blocks.BlockDeathWood;
+import common.mrcomputerghost.evilforest.blocks.BlockThornShrub;
+import common.mrcomputerghost.evilforest.biomes.BiomeGenWasted;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import net.minecraftforge.common.*;
 
 
 @Mod(modid = "EvilForest", name = "EvilForest", version = "V.1")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class EvilForest 
 {	
-	public static final String modid = "MrComputerGhost_EvilForest";
+	public static final String modid = "EvilForest";
 
 	//Blocks
 	public static Block DeathWood;

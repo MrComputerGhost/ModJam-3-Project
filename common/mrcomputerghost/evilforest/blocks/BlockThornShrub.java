@@ -1,6 +1,8 @@
-package mrcomputerghost.mods.evilforest.blocks;
+package common.mrcomputerghost.evilforest.blocks;
 
 import java.util.Random;
+
+import common.mrcomputerghost.evilforest.core.EvilForest;
 
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -116,9 +118,10 @@ public class BlockThornShrub extends Block
         par5Entity.attackEntityFrom(DamageSource.cactus, 1.0F);
     }
     
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-        this.blockIcon = par1IconRegister.registerIcon("ef:thorn_shrub");
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister par1IconRegister) {
+            this.blockIcon = par1IconRegister.registerIcon(EvilForest.modid + ":thorn_shrub");
     }
 
 

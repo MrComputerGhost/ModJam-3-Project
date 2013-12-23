@@ -1,8 +1,9 @@
-package mrcomputerghost.mods.evilforest.worldgen;
+package common.mrcomputerghost.evilforest.worldgen;
 
 import java.util.Random;
 
-import mrcomputerghost.mods.evilforest.core.EvilForest;
+import common.mrcomputerghost.evilforest.core.EvilForest;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;

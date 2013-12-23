@@ -1,20 +1,21 @@
-package mrcomputerghost.mods.evilforest.blocks;
+package common.mrcomputerghost.evilforest.blocks;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import common.mrcomputerghost.evilforest.core.EvilForest;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockDeathWood extends Block
+public class BlockDeathLeaves extends Block
 {
 
-	public BlockDeathWood(int par1, String texture) 
+	public BlockDeathLeaves(int par1, String texture) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
@@ -29,9 +30,15 @@ public class BlockDeathWood extends Block
             return 1;
     }
 
-    public void registerIcons(IconRegister reg) 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister par1IconRegister) {
+            this.blockIcon = par1IconRegister.registerIcon(EvilForest.modid + ":leaves_death");
+    }
+    
+    public boolean isOpaqueCube()
     {
-            this.blockIcon = reg.registerIcon("ef:death_wood"); 
+        return false;
     }
 	
 	/**

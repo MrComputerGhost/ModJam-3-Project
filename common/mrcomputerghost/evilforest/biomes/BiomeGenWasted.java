@@ -1,4 +1,4 @@
-package mrcomputerghost.mods.evilforest.biomes;
+package common.mrcomputerghost.evilforest.biomes;
 
 import java.util.Random;
 

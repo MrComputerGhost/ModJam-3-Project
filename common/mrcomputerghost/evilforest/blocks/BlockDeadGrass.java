@@ -1,22 +1,26 @@
-package mrcomputerghost.mods.evilforest.blocks;
+package common.mrcomputerghost.evilforest.blocks;
 
 import java.util.Random;
+
+import common.mrcomputerghost.evilforest.core.EvilForest;
 
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockDeathLeaves extends Block
+public class BlockDeadGrass extends Block
 {
 
-	public BlockDeathLeaves(int par1, String texture) 
+	public BlockDeadGrass(int par1, String texture) 
     {
-            super(par1, Material.wood);
+            super(par1, Material.grass);
             setCreativeTab(CreativeTabs.tabBlock);
     }
 
@@ -29,14 +33,10 @@ public class BlockDeathLeaves extends Block
             return 1;
     }
 
-    public void registerIcons(IconRegister reg) 
-    {
-            this.blockIcon = reg.registerIcon("ef:leaves_death"); 
-    }
-    
-    public boolean isOpaqueCube()
-    {
-        return false;
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister par1IconRegister) {
+            this.blockIcon = par1IconRegister.registerIcon(EvilForest.modid + ":dead_grass");
     }
 	
 	/**
@@ -49,7 +49,7 @@ public class BlockDeathLeaves extends Block
 
             if (par5Random.nextInt(2) == 0)
             {
-                    par1World.spawnParticle("smoke", par2 + par5Random.nextFloat(), par3 + 1.1F, par4 + par5Random.nextFloat(), 0.0D, 0.0D, 0.0D);
+                    par1World.spawnParticle("death_suspend", par2 + par5Random.nextFloat(), par3 + 1.1F, par4 + par5Random.nextFloat(), 0.0D, 0.0D, 0.0D);
             }
     }
 

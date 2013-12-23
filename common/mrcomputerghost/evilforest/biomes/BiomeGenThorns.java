@@ -1,10 +1,10 @@
-package mrcomputerghost.mods.evilforest.biomes;
+package common.mrcomputerghost.evilforest.biomes;
 
 import java.util.Random;
 
-import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilForest1;
-import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilForest2;
-import mrcomputerghost.mods.evilforest.worldgen.WorldGenEvilWell;
+import common.mrcomputerghost.evilforest.worldgen.WorldGenEvilForest1;
+import common.mrcomputerghost.evilforest.worldgen.WorldGenEvilForest2;
+import common.mrcomputerghost.evilforest.worldgen.WorldGenEvilWell;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -24,13 +24,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BiomeGenEvilForest extends BiomeGenBase
+public class BiomeGenThorns extends BiomeGenBase
 {
     
 
 	public WorldGenMinable theWorldGenerator;
 
-	public BiomeGenEvilForest(int par1)
+	public BiomeGenThorns(int par1)
     {
 		
         super(par1);
@@ -68,7 +68,7 @@ public class BiomeGenEvilForest extends BiomeGenBase
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-    	return new WorldGenEvilForest1();
+    	 return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest2(false));
     }
 
     @SideOnly(Side.CLIENT)
