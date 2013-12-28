@@ -1,4 +1,4 @@
-package common.mrcomputerghost.evilforest.worldgen;
+package mrcomputerghost.forbiddenlands.worldgen;
 
 import java.util.Random;
 

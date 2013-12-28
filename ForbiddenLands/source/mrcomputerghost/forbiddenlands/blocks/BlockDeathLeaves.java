@@ -1,9 +1,8 @@
-package common.mrcomputerghost.evilforest.blocks;
+package mrcomputerghost.forbiddenlands.blocks;
 
 import java.util.Random;
 
-import common.mrcomputerghost.evilforest.core.EvilForest;
-
+import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -33,7 +32,7 @@ public class BlockDeathLeaves extends Block
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-            this.blockIcon = par1IconRegister.registerIcon(EvilForest.modid + ":leaves_death");
+            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:leaves_death");
     }
     
     public boolean isOpaqueCube()

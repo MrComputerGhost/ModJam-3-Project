@@ -1,24 +1,20 @@
-package common.mrcomputerghost.evilforest.blocks;
+package mrcomputerghost.forbiddenlands.blocks;
 
 import java.util.Random;
 
-import common.mrcomputerghost.evilforest.core.EvilForest;
-
-import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockDeathWood extends Block
+public class BlockDeathPlanks extends Block
 {
 
-	public BlockDeathWood(int par1, String texture) 
+	public BlockDeathPlanks(int par1, String texture) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
@@ -36,7 +32,7 @@ public class BlockDeathWood extends Block
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-            this.blockIcon = par1IconRegister.registerIcon(EvilForest.modid + ":death_wood");
+            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:death_planks");
     }
 	
 	/**

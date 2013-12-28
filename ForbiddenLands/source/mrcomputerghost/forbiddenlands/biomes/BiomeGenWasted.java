@@ -1,4 +1,4 @@
-package common.mrcomputerghost.evilforest.biomes;
+package mrcomputerghost.forbiddenlands.biomes;
 
 import java.util.Random;
 

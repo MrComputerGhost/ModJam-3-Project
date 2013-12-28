@@ -1,18 +1,18 @@
-package common.mrcomputerghost.evilforest.biomes;
+package mrcomputerghost.forbiddenlands.biomes;
 
 import java.util.Random;
 
-import common.mrcomputerghost.evilforest.worldgen.WorldGenEvilForest1;
-import common.mrcomputerghost.evilforest.worldgen.WorldGenEvilForest2;
-import common.mrcomputerghost.evilforest.worldgen.WorldGenEvilWell;
+import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilForest1;
+import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilForest2;
+import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilWell;
 import net.minecraft.block.Block;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.World;
@@ -24,13 +24,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BiomeGenEvilForest extends BiomeGenBase
+public class BiomeGenThorns extends BiomeGenBase
 {
     
 
 	public WorldGenMinable theWorldGenerator;
 
-	public BiomeGenEvilForest(int par1)
+	public BiomeGenThorns(int par1)
     {
 		
         super(par1);
@@ -68,7 +68,7 @@ public class BiomeGenEvilForest extends BiomeGenBase
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-    	return new WorldGenEvilForest1();
+    	 return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest2(false));
     }
 
     @SideOnly(Side.CLIENT)

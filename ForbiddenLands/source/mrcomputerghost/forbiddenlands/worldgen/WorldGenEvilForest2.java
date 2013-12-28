@@ -1,11 +1,12 @@
-package common.mrcomputerghost.evilforest.worldgen;
+package mrcomputerghost.forbiddenlands.worldgen;
 
 import java.util.Random;
 
-import common.mrcomputerghost.evilforest.core.EvilForest;
+import mrcomputerghost.forbiddenlands.ForbiddenLands;
+import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenEvilForest2 extends WorldGenerator
 {
@@ -42,7 +43,7 @@ public class WorldGenEvilForest2 extends WorldGenerator
         if (i1 == Block.dirt.blockID || i1 == Block.grass.blockID)
         {
             ++par4;
-            this.setBlockAndMetadata(par1World, par3, par4, par5, EvilForest.DeathWood.blockID, this.field_76526_b);
+            this.setBlockAndMetadata(par1World, par3, par4, par5, ForbiddenBlocks.DeathWood.blockID, this.field_76526_b);
 
             for (int j1 = par4; j1 <= par4 + 2; ++j1)
             {
@@ -62,7 +63,7 @@ public class WorldGenEvilForest2 extends WorldGenerator
                         if ((Math.abs(j2) != l1 || Math.abs(l2) != l1 || par2Random.nextInt(2) != 0) && 
                             (block == null || block.canBeReplacedByLeaves(par1World, i2, j1, k2)))
                         {
-                            this.setBlockAndMetadata(par1World, i2, j1, k2, EvilForest.ThornShrub.blockID, this.field_76527_a);
+                            this.setBlockAndMetadata(par1World, i2, j1, k2, ForbiddenBlocks.ThornShrub.blockID, this.field_76527_a);
                         }
                     }
                 }

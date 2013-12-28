@@ -1,9 +1,8 @@
-package common.mrcomputerghost.evilforest.worldgen;
+package mrcomputerghost.forbiddenlands.worldgen;
 
 import java.util.Random;
 
-import common.mrcomputerghost.evilforest.core.EvilForest;
-
+import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -90,7 +89,7 @@ public class WorldGenEvilForest1 extends WorldGenerator
                                 if ((Math.abs(k2) != l2 || Math.abs(j3) != l2 || l2 <= 0) && 
                                     (block == null || block.canBeReplacedByLeaves(par1World, j2, i2, i3)))
                                 {
-                                    this.setBlockAndMetadata(par1World, j2, i2, i3, EvilForest.DeathLeaves.blockID, 0);
+                                    this.setBlockAndMetadata(par1World, j2, i2, i3, ForbiddenBlocks.DeathLeaves.blockID, 0);
                                 }
                             }
                         }
@@ -113,7 +112,7 @@ public class WorldGenEvilForest1 extends WorldGenerator
 
                         if (j2 == 0 || block == null || block.isLeaves(par1World, par3, par4 + i2, par5))
                         {
-                            this.setBlockAndMetadata(par1World, par3, par4 + i2, par5, EvilForest.DeathWood.blockID, 0);
+                            this.setBlockAndMetadata(par1World, par3, par4 + i2, par5, ForbiddenBlocks.DeathWood.blockID, 0);
                         }
                     }
 
