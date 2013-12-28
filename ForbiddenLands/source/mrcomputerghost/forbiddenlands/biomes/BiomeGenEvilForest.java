@@ -57,7 +57,6 @@ public class BiomeGenEvilForest extends BiomeGenBase
         this.theWorldGenerator = new WorldGenMinable(Block.oreGold.blockID, 10);
         this.theWorldGenerator = new WorldGenMinable(Block.oreLapis.blockID, 10);
         this.theWorldGenerator = new WorldGenMinable(Block.oreEmerald.blockID, 10);
-
         
         
     }

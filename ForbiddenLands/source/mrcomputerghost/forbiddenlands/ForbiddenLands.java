@@ -53,11 +53,8 @@ public class ForbiddenLands
         
 		//Biomes
 		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("ForbiddenLands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
-		ThornForest = new BiomeGenThorns(43).setColor(616363).setBiomeName("ForbiddenLandsHills").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.3F).setDisableRain();
+		ThornForest = new BiomeGenThorns(43).setColor(616363).setBiomeName("ThornForest").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.3F).setDisableRain();
 		Wasted = new BiomeGenWasted(44).setColor(6163).setBiomeName("Wasted").func_76733_a(9154376).setMinMaxHeight(-0.2F, -0.1F).setDisableRain();
-		
-		//Registering
-		
 		
 		GameRegistry.addBiome(ForbiddenLandsBiome);
 		GameRegistry.addBiome(ThornForest);

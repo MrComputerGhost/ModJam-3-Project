@@ -20,7 +20,7 @@ public class BlockThornShrub extends Block
 
 	public BlockThornShrub(int par1, String texture) 
     {
-            super(par1, Material.cactus);
+            super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
     }
 
