@@ -44,9 +44,10 @@ public class ForbiddenBlocks {
 		LanguageRegistry.addName(DeadGrass, "Dead Grass");
 		LanguageRegistry.addName(ThornShrub, "Thorn Shrub");
 		
-		MinecraftForge.addGrassPlant(ThornShrub, 0, 1);
-		
-
+		MinecraftForge.addGrassPlant(ThornShrub, 0, 25);
+		MinecraftForge.addGrassSeed(new ItemStack(Item.pumpkinSeeds), 25);
+		MinecraftForge.addGrassSeed(new ItemStack(Item.melonSeeds), 25);
+		MinecraftForge.addGrassSeed(new ItemStack(ThornShrub), 5);
 		ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(ForbiddenBlocks.DeathPlanks), 1, 5, 25));
 		ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(ForbiddenBlocks.DeathPlanks), 1, 5, 25));
 		
