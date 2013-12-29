@@ -17,12 +17,14 @@ public class ForbiddenBlocks {
 	public static Block DeathPlanks;
 	public static Block DeadGrass;
 	public static Block ThornShrub;
+	public static Block Thorns;
 	
 	public static int DeathWoodDefaultID;
 	public static int DeathLeavesDefaultID;
 	public static int DeathPlanksDefaultID;
 	public static int DeadGrassDefaultID;
 	public static int ThornShrubDefaultID;
+	public static int ThornsDeafultID;
 	
 	public static void initBlocks()
 	{
@@ -31,12 +33,14 @@ public class ForbiddenBlocks {
 		DeathPlanks = new BlockDeathPlanks(4044, "DeathPlanks").setUnlocalizedName("DeathPlanks").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
 		DeadGrass = new BlockDeadGrass(4045, "DeadGrass").setUnlocalizedName("DeadGrass").setHardness(1.0F).setStepSound(Block.soundGrassFootstep).setResistance(0.0F);
 		ThornShrub = new BlockThornShrub(4046, "ThornShrub").setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F);
+		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F);
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
 		GameRegistry.registerBlock(DeathPlanks, "DeathPlanks");
 		GameRegistry.registerBlock(DeadGrass, "DeadGrass");
 		GameRegistry.registerBlock(ThornShrub, "ThornShrub");
+		GameRegistry.registerBlock(Thorns, "Thorns");
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
@@ -55,6 +59,11 @@ public class ForbiddenBlocks {
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.DeathPlanks, 4), new Object[]
 				{
 						new ItemStack(ForbiddenBlocks.DeathWood)
+				});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.Thorns, 4), new Object[]
+				{
+						new ItemStack(ForbiddenBlocks.ThornShrub)
 				});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.stick, 4), new Object[]

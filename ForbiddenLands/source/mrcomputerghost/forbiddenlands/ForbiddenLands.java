@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.0")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
@@ -36,7 +36,8 @@ public class ForbiddenLands
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		
+
+        
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
         config.load();
 		
@@ -45,11 +46,12 @@ public class ForbiddenLands
         ForbiddenBlocks.DeathPlanksDefaultID = config.getBlock("Death Planks", 4044).getInt();
         ForbiddenBlocks.DeadGrassDefaultID = config.getBlock("Dead Grass", 4045).getInt();
         ForbiddenBlocks.ThornShrubDefaultID = config.getBlock("Thorn Shrub", 4046).getInt();
-        
+
         config.save();
         
-        ForbiddenBlocks.initBlocks();      
+        ForbiddenBlocks.initBlocks(); 
         
+        LanguageRegistry.instance().addStringLocalization("itemGroup.ForbiddenLands", "ForbiddenLands");
         
 		//Biomes
 		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("ForbiddenLands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
@@ -59,16 +61,15 @@ public class ForbiddenLands
 		GameRegistry.addBiome(ForbiddenLandsBiome);
 		GameRegistry.addBiome(ThornForest);
 		GameRegistry.addBiome(Wasted);
-				
-	
-
+		
+		
 		
 		}
 	
 	@EventHandler
     public void load(FMLInitializationEvent event)
     {
-           
+		
     }
     
     @EventHandler
