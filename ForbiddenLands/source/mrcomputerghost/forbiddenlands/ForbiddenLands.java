@@ -4,6 +4,7 @@ import mrcomputerghost.forbiddenlands.biomes.BiomeGenEvilForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenThorns;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenWasted;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
+import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
@@ -50,6 +51,7 @@ public class ForbiddenLands
         config.save();
         
         ForbiddenBlocks.initBlocks(); 
+        ForbiddenItems.initItems();
         
         LanguageRegistry.instance().addStringLocalization("itemGroup.ForbiddenLands", "ForbiddenLands");
         

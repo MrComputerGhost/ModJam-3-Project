@@ -24,6 +24,7 @@ public class BlockDeathWood extends Block
     {
             return this.blockID;
     }
+    
     public int quantityDropped(Random random)
     {
             return 1;
@@ -32,7 +33,7 @@ public class BlockDeathWood extends Block
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:death_wood");
+            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:log_death");
     }
 	
 	/**

@@ -1,13 +1,10 @@
 package mrcomputerghost.forbiddenlands.blocks;
 
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
-import mrcomputerghost.forbiddenlands.ForbiddenLands;
-import net.minecraft.block.*;
+import mrcomputerghost.forbiddenlands.util.ForbiddenUtil;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
@@ -15,8 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 
 public class BlockThorns extends Block
 {	
@@ -86,7 +82,7 @@ public class BlockThorns extends Block
     
     public Icon getIcon(int par1, int par2)
     {
-        return Block.tripWire.getIcon(par1, par2);
+        return Block.redstoneWire.getIcon(par1, par2);
     }
 
     /**
@@ -113,19 +109,16 @@ public class BlockThorns extends Block
     }
     
     /**
-     * Called whenever an entity is walking on top of this block. Args: world, x, y, z, entity
-     */
-    public void onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity)
-    {
-    	par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
-    }
-
-    /**
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
    
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
-        par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
+    	int index = -1;
+    	for(int a = 0; a < ForbiddenUtil.jamcraftPlayers.size(); a++) if(Minecraft.getMinecraft().thePlayer.username.equals(ForbiddenUtil.jamcraftPlayers.get(a))) index = a;
+    	if (index != -1){
+    		par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
+    	}
+    		
     }
 }

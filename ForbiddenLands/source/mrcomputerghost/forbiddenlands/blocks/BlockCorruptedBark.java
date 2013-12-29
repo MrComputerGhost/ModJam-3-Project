@@ -11,10 +11,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockDeathPlanks extends Block
+public class BlockCorruptedBark extends Block
 {
 
-	public BlockDeathPlanks(int par1, String texture) 
+	public BlockCorruptedBark(int par1, String texture) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
@@ -24,6 +24,7 @@ public class BlockDeathPlanks extends Block
     {
             return this.blockID;
     }
+    
     public int quantityDropped(Random random)
     {
             return 1;
@@ -32,7 +33,7 @@ public class BlockDeathPlanks extends Block
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:plank_death");
+            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:corrupt_bark");
     }
 	
 	/**
