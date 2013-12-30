@@ -82,7 +82,7 @@ public class BlockThorns extends Block
     
     public Icon getIcon(int par1, int par2)
     {
-        return Block.redstoneWire.getIcon(par1, par2);
+        return Block.tripWire.getIcon(par1, par2);
     }
 
     /**
@@ -114,11 +114,8 @@ public class BlockThorns extends Block
    
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
-    	int index = -1;
-    	for(int a = 0; a < ForbiddenUtil.jamcraftPlayers.size(); a++) if(Minecraft.getMinecraft().thePlayer.username.equals(ForbiddenUtil.jamcraftPlayers.get(a))) index = a;
-    	if (index != -1){
+    
     		par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
-    	}
     		
     }
 }

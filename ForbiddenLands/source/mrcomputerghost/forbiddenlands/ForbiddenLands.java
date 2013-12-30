@@ -1,12 +1,17 @@
 package mrcomputerghost.forbiddenlands;
 
+import java.util.logging.Logger;
+
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEvilForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenThorns;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenWasted;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
+import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -18,10 +23,13 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
+
 @Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.0")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
+	public static final Logger logger = Logger.getLogger("ForbiddenLands");
+	
 	@Instance("ForbiddenLands")
 	public static ForbiddenLands instance;
         
@@ -32,7 +40,8 @@ public class ForbiddenLands
 	public static BiomeGenBase ForbiddenLandsBiome;
 	public static BiomeGenBase ThornForest;
 	public static BiomeGenBase Wasted;
-
+	
+	
         
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -52,6 +61,7 @@ public class ForbiddenLands
         
         ForbiddenBlocks.initBlocks(); 
         ForbiddenItems.initItems();
+        ForbiddenRecipes.initRecipes();
         
         LanguageRegistry.instance().addStringLocalization("itemGroup.ForbiddenLands", "ForbiddenLands");
         
@@ -82,6 +92,19 @@ public class ForbiddenLands
     
 
 	public ForbiddenLands()
-		{
+	{
+		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
+        if (Loader.isModLoaded("magitech"))
+        {
+            System.out.println("[ForbiddenLands] Give me the bacon, Hammer");
+        }
+        if (Loader.isModLoaded("glowglass"))
+        {
+            System.out.println("[ForbiddenLands] Prepare the traps, the Slimes are invading!");
+        }
+        if (Loader.isModLoaded("OreSpiders"))
+        {
+            System.out.println("[ForbiddenLands] The Spiders are comming!");
+        }
 	}
 }
