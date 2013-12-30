@@ -30,8 +30,14 @@ public class ItemRider extends Item {
 	
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	    {
-	        player.mountEntity(entity);
-			return true;
+	        if (player.riddenByEntity != entity){
+	        	player.mountEntity(entity);
+	        	return true;
+	        }
+	        else {
+	        	return false;
+	        }
+			
 	    }
 	
 	

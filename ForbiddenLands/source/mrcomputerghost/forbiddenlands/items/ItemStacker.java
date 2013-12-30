@@ -29,10 +29,15 @@ public class ItemStacker extends Item {
 	}
 	
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
-	    {
-	        entity.mountEntity(player);
-			return true;
-	    }
+		{
+			if (entity.riddenByEntity != player){
+				entity.mountEntity(player);
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 	
 	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
