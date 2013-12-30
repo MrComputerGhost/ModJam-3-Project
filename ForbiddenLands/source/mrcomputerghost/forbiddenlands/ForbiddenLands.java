@@ -24,7 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.0")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.5")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
