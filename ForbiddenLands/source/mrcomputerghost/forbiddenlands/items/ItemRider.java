@@ -47,7 +47,9 @@ public class ItemRider extends Item {
         {
         case 0:
         	par1ItemStack.itemID = ForbiddenItems.Stacker.itemID;
-            break;
+        	par1ItemStack.setItemName("§rRider - Stack Mode");
+        	par1ItemStack.setItemName("§rRider");
+        	break;
         }
 		return true;
     }
@@ -59,10 +61,9 @@ public class ItemRider extends Item {
         switch (stack.getItemDamage())
         {
         case 0:
-            list.add("Mode: Ride");
-            break;
-        case 1:
-        	list.add("Mode: Stack");
+            list.add("\u00A75Mode: Ride");
+            list.add("\u00A75Left-Click Entity to Ride");
+            list.add("\u00A75Right-Click to Change");
             break;
         }
     }
