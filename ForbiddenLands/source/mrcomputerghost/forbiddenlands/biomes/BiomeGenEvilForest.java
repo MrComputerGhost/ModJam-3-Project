@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityBat;
@@ -51,6 +52,7 @@ public class BiomeGenEvilForest extends BiomeGenBase
         this.spawnableMonsterList.add(new SpawnListEntry(EntityBat.class, 15, 5, 5));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 5, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityChicken.class, 5, 5, 5));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 1, 0, 1));
         //this.spawnableMonsterList.add(new SpawnListEntry(EntityWither.class, 1, 0, 1));
         this.theWorldGenerator = new WorldGenMinable(Block.silverfish.blockID, 25);
         this.theWorldGenerator = new WorldGenMinable(Block.pumpkin.blockID, 15);

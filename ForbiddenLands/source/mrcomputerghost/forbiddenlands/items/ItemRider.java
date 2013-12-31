@@ -48,7 +48,6 @@ public class ItemRider extends Item {
         case 0:
         	par1ItemStack.itemID = ForbiddenItems.Stacker.itemID;
         	par1ItemStack.setItemName("\u00A7rRider - Stack Mode");
-        	par1ItemStack.setItemName("\u00A7rRider");
         	break;
         }
 		return true;

@@ -8,8 +8,15 @@ import mrcomputerghost.forbiddenlands.biomes.BiomeGenWasted;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.EnumHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -24,18 +31,23 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.7")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.8")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
+	
+	public static final EnumArmorMaterial EnumArmorParadox = EnumHelper.addArmorMaterial("PARADOXARMOR", 33, new int[]{3, 8, 6, 3}, 35);
+	
 	
 	@Instance("ForbiddenLands")
 	public static ForbiddenLands instance;
         
 	@SidedProxy(clientSide = "mrcomputerghost.forbiddenlands.ClientProxy", serverSide = "mrcomputerghost.forbiddenlands.CommonProxy")
 	public static CommonProxy proxy; 
-    	
+    
+	public static CreativeTabs ForbiddenTab = new ForbiddenCreativeTab(CreativeTabs.getNextID(), "Forbidden Lands");
+	
 	//Biomes
 	public static BiomeGenBase ForbiddenLandsBiome;
 	public static BiomeGenBase ThornForest;
@@ -56,7 +68,9 @@ public class ForbiddenLands
         ForbiddenBlocks.DeathPlanksDefaultID = config.getBlock("Death Planks", 4044).getInt();
         ForbiddenBlocks.DeadGrassDefaultID = config.getBlock("Dead Grass", 4045).getInt();
         ForbiddenBlocks.ThornShrubDefaultID = config.getBlock("Thorn Shrub", 4046).getInt();
-
+        ForbiddenBlocks.ThornsDefaultID = config.getBlock("Thorns", 4047).getInt();
+        ForbiddenBlocks.CorruptedBarkDefaultID = config.getBlock("Corrupted Bark", 4048).getInt();
+     
         config.save();
         
         ForbiddenBlocks.initBlocks(); 
@@ -74,9 +88,9 @@ public class ForbiddenLands
 		GameRegistry.addBiome(ThornForest);
 		GameRegistry.addBiome(Wasted);
 		
+		ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(ForbiddenItems.ParadoxDust), 1, 5, 15));
 		
-		
-		}
+	}
 	
 	@EventHandler
     public void load(FMLInitializationEvent event)

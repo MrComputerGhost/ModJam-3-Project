@@ -1,5 +1,6 @@
 package mrcomputerghost.forbiddenlands.blocks;
 
+import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,13 +32,13 @@ public class ForbiddenBlocks {
 	
 	public static void initBlocks()
 	{
-		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
-		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F);
-		DeathPlanks = new BlockDeathPlanks(4044, "DeathPlanks").setUnlocalizedName("DeathPlanks").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F);
-		DeadGrass = new BlockDeadGrass(4045, "DeadGrass").setUnlocalizedName("DeadGrass").setHardness(1.0F).setStepSound(Block.soundGrassFootstep).setResistance(0.0F);
-		ThornShrub = new BlockThornShrub(4046, "ThornShrub").setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F);
-		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(0.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F);
-		CorruptedBark = new BlockCorruptedBark(4048, "CorruptedBark").setUnlocalizedName("CorruptedBark").setHardness(0.7F).setStepSound(Block.soundLadderFootstep).setResistance(0.0F);
+		DeathWood = new BlockDeathWood(4042, "DeathWood").setUnlocalizedName("DeathWood").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		DeathPlanks = new BlockDeathPlanks(4044, "DeathPlanks").setUnlocalizedName("DeathPlanks").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		DeadGrass = new BlockDeadGrass(4045, "DeadGrass").setUnlocalizedName("DeadGrass").setHardness(1.0F).setStepSound(Block.soundGrassFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		ThornShrub = new BlockThornShrub(4046, "ThornShrub").setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(0.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		CorruptedBark = new BlockCorruptedBark(4048, "CorruptedBark").setUnlocalizedName("CorruptedBark").setHardness(0.7F).setStepSound(Block.soundLadderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
