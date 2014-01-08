@@ -2,18 +2,22 @@ package mrcomputerghost.forbiddenlands;
 
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+import net.minecraft.*;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEvilForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenThorns;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenWasted;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.EnumHelper;
@@ -31,13 +35,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "2.8")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.0")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
 	
-	public static final EnumArmorMaterial EnumArmorParadox = EnumHelper.addArmorMaterial("PARADOXARMOR", 33, new int[]{3, 8, 6, 3}, 35);
+	
 	
 	
 	@Instance("ForbiddenLands")
@@ -87,9 +91,9 @@ public class ForbiddenLands
 		GameRegistry.addBiome(ForbiddenLandsBiome);
 		GameRegistry.addBiome(ThornForest);
 		GameRegistry.addBiome(Wasted);
-		
-		ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(ForbiddenItems.ParadoxDust), 1, 5, 15));
-		
+		BiomeManager.addSpawnBiome(ForbiddenLandsBiome);
+		BiomeManager.addSpawnBiome(ThornForest);
+		BiomeManager.addSpawnBiome(Wasted);
 	}
 	
 	@EventHandler
@@ -101,24 +105,14 @@ public class ForbiddenLands
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        System.out.println("Forbidden Lands Mod Initialized");    
+    	
     }
     
 
 	public ForbiddenLands()
 	{
-		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
-        if (Loader.isModLoaded("magitech"))
-        {
-            System.out.println("[ForbiddenLands] Give me the bacon, Hammer");
-        }
-        if (Loader.isModLoaded("glowglass"))
-        {
-            System.out.println("[ForbiddenLands] Prepare the traps, the Slimes are invading!");
-        }
-        if (Loader.isModLoaded("OreSpiders"))
-        {
-            System.out.println("[ForbiddenLands] The Spiders are comming!");
-        }
+		
+        
+        
 	}
 }

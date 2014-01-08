@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -28,26 +29,28 @@ public class ItemRider extends Item {
 		this.itemIcon = registerIcon.registerIcon("minecraft:lead");
 	}
 	
-	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity, World world)
 	    {
 	        if (player.riddenByEntity != entity){
 	        	player.mountEntity(entity);
+	        	player.fallDistance = 0;
+	        	entity.canRiderInteract();
 	        	return true;
 	        }
+	        	        
 	        else {
 	        	return false;
 	        }
 			
 	    }
-	
-	
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
 		switch (par1ItemStack.getItemDamage())
         {
         case 0:
         	par1ItemStack.itemID = ForbiddenItems.Stacker.itemID;
         	par1ItemStack.setItemName("\u00A7rRider - Stack Mode");
+        	player.addChatMessage("Rider Mode Set To Stack");
         	break;
         }
 		return true;

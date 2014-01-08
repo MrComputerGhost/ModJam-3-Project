@@ -2,6 +2,7 @@ package mrcomputerghost.forbiddenlands.blocks;
 
 import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -21,6 +22,7 @@ public class ForbiddenBlocks {
 	public static Block ThornShrub;
 	public static Block Thorns;
 	public static Block CorruptedBark;
+	public static Block FBPortal;
 	
 	public static int DeathWoodDefaultID;
 	public static int DeathLeavesDefaultID;
@@ -29,6 +31,7 @@ public class ForbiddenBlocks {
 	public static int ThornShrubDefaultID;
 	public static int ThornsDefaultID;
 	public static int CorruptedBarkDefaultID;
+	public static int FBPortalDefaultID;
 	
 	public static void initBlocks()
 	{
@@ -39,6 +42,7 @@ public class ForbiddenBlocks {
 		ThornShrub = new BlockThornShrub(4046, "ThornShrub").setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(0.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		CorruptedBark = new BlockCorruptedBark(4048, "CorruptedBark").setUnlocalizedName("CorruptedBark").setHardness(0.7F).setStepSound(Block.soundLadderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		//FBPortal = new BlockFBPortal(4049).setUnlocalizedName("FBPortal").setBlockUnbreakable().setStepSound(Block.soundGlassFootstep).setResistance(10.0F).setCreativeTab(CreativeTabs.tabAllSearch);
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");

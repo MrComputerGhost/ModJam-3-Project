@@ -24,7 +24,8 @@ public class BiomeGenWasted extends BiomeGenBase
         this.theBiomeDecorator.deadBushPerChunk = 2;
         this.theBiomeDecorator.reedsPerChunk = 50;
         this.theBiomeDecorator.cactiPerChunk = 10;
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 15, 1, 15));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 15, 15, 15));
+        
     }
 
 }
