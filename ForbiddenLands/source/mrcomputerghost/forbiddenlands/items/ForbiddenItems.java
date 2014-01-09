@@ -5,10 +5,10 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.ModLoader;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.EnumHelper;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -47,6 +47,7 @@ public class ForbiddenItems {
 	public static final EnumToolMaterial EnumToolParadox = EnumHelper.addToolMaterial("Paradox", 3, 2570, 10.0F, 4.5F, 35);
 	public static final EnumArmorMaterial EnumArmorParadox = EnumHelper.addArmorMaterial("Paradox", 33, new int[]{3, 8, 6, 3}, 35);
 	
+	
 	public static void initItems()
     {
 		PureBark = new ItemPureBark(PureBarkDefaultID).setUnlocalizedName("Pure Bark").setTextureName("forbiddenlands:purebark").setCreativeTab(ForbiddenLands.ForbiddenTab);
@@ -82,10 +83,10 @@ public class ForbiddenItems {
 		ParadoxBow = new ItemParadoxBow(ParadoxBowDefaultID).setUnlocalizedName("Paradox Bow").setTextureName("forbiddenlands:bonebow").setCreativeTab(ForbiddenLands.ForbiddenTab);
 		GameRegistry.registerItem(ParadoxBow, "Paradox Bow");
 		LanguageRegistry.addName(ParadoxBow, "Paradox Rocket");
-		ParadoxHelm = (new ItemParadoxArmor(ParadoxHelmDefaultID, EnumArmorParadox, ModLoader.addArmor("Paradox"), 0).setUnlocalizedName("Paradox Helm").setCreativeTab(ForbiddenLands.ForbiddenTab));
-		ParadoxChest = (new ItemParadoxArmor(ParadoxChestDefaultID, EnumArmorParadox, ModLoader.addArmor("Paradox"), 1).setUnlocalizedName("Paradox Chest").setCreativeTab(ForbiddenLands.ForbiddenTab));
-		ParadoxLegs = (new ItemParadoxArmor(ParadoxLegsDefaultID, EnumArmorParadox, ModLoader.addArmor("Paradox"), 2).setUnlocalizedName("Paradox Legs").setCreativeTab(ForbiddenLands.ForbiddenTab));
-		ParadoxBoots = (new ItemParadoxArmor(ParadoxBootsDefaultID, EnumArmorParadox, ModLoader.addArmor("Paradox"), 3).setUnlocalizedName("Paradox Boots").setCreativeTab(ForbiddenLands.ForbiddenTab));
+		/*ParadoxHelm = (new ItemParadoxArmor(ParadoxHelmDefaultID, EnumArmorParadox, 0).setUnlocalizedName("Paradox Helm").setCreativeTab(ForbiddenLands.ForbiddenTab));
+		ParadoxChest = (new ItemParadoxArmor(ParadoxChestDefaultID, EnumArmorParadox, 1).setUnlocalizedName("Paradox Chest").setCreativeTab(ForbiddenLands.ForbiddenTab));
+		ParadoxLegs = (new ItemParadoxArmor(ParadoxLegsDefaultID, EnumArmorParadox, 2).setUnlocalizedName("Paradox Legs").setCreativeTab(ForbiddenLands.ForbiddenTab));
+		ParadoxBoots = (new ItemParadoxArmor(ParadoxBootsDefaultID, EnumArmorParadox, 3).setUnlocalizedName("Paradox Boots").setCreativeTab(ForbiddenLands.ForbiddenTab));
 		LanguageRegistry.addName(ParadoxHelm, "Paradox Helmet");
 		LanguageRegistry.addName(ParadoxChest, "Paradox Chestplate");
 		LanguageRegistry.addName(ParadoxLegs, "Paradox Leggings");
@@ -93,7 +94,7 @@ public class ForbiddenItems {
 		GameRegistry.registerItem(ParadoxHelm, "Paradox Helm");
 		GameRegistry.registerItem(ParadoxChest, "Paradox Chest");
 		GameRegistry.registerItem(ParadoxLegs, "Paradox Legs");
-		GameRegistry.registerItem(ParadoxBoots, "Paradox Boots");
+		GameRegistry.registerItem(ParadoxBoots, "Paradox Boots");*/
 		
 	}
 

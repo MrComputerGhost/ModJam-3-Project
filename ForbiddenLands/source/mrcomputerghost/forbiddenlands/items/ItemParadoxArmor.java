@@ -10,9 +10,9 @@ import net.minecraft.item.ItemStack;
 
 public class ItemParadoxArmor extends ItemArmor
 {
-	public ItemParadoxArmor(int parl, EnumArmorMaterial par2, int par3, int par4)
+	public ItemParadoxArmor(int parl, EnumArmorMaterial par2, int par3)
 	{
-		super(parl, par2, par3, par4);
+		super(parl, par2, par3, par3);
 	}
 	
 	public void registerIcons(IconRegister parl)

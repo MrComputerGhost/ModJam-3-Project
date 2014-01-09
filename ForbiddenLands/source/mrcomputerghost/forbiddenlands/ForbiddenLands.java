@@ -2,27 +2,16 @@ package mrcomputerghost.forbiddenlands;
 
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
-import net.minecraft.*;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEvilForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenThorns;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenWasted;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.EnumHelper;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
