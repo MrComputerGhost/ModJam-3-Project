@@ -4,7 +4,6 @@ import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.ModLoader;
 import net.minecraft.util.WeightedRandomChestContent;
