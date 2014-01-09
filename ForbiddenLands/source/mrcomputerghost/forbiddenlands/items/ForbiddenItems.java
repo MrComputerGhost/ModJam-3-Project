@@ -9,6 +9,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.EnumHelper;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -95,6 +96,7 @@ public class ForbiddenItems {
 		GameRegistry.registerItem(ParadoxChest, "Paradox Chest");
 		GameRegistry.registerItem(ParadoxLegs, "Paradox Legs");
 		GameRegistry.registerItem(ParadoxBoots, "Paradox Boots");*/
+		
 		
 	}
 

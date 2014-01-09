@@ -29,20 +29,19 @@ public class ItemRider extends Item {
 		this.itemIcon = registerIcon.registerIcon("minecraft:lead");
 	}
 	
-	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity, World world)
-	    {
-	        if (player.riddenByEntity != entity){
-	        	player.mountEntity(entity);
-	        	player.fallDistance = 0;
-	        	entity.canRiderInteract();
-	        	return true;
-	        }
-	        	        
-	        else {
-	        	return false;
-	        }
-			
-	    }
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+	{
+		if ((player.riddenByEntity != entity)) {
+			player.mountEntity(entity);
+			player.fallDistance = 0;
+			return true;
+		}
+		
+		else {
+			return false;
+		}
+	}
+	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
 		switch (par1ItemStack.getItemDamage())

@@ -30,6 +30,6 @@ public class ForbiddenRecipes {
         GameRegistry.addRecipe(new ItemStack(Item.saddle), new Object[]{"ABA", "AAA", "S00", 'A', Item.leather, 'B', Block.cloth, 'S', Item.silk});   
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxPick), new Object[]{"AAA", "0S0", "0S0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.stick});
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxSword), new Object[]{"0A0", "0A0", "0S0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.stick});
-        GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxBow), new Object[]{"SA0", "S0A", "SA0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.silk});
+        GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxBow), new Object[]{"SA0", "SBA", "SA0", 'A', Block.wood, 'S', Item.silk, 'B', ForbiddenItems.Rider});
     }
 }
