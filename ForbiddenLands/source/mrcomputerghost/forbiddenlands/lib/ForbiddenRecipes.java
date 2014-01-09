@@ -11,10 +11,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ForbiddenRecipes {
 
     
-    
     public static void initRecipes()
     {    
     	FurnaceRecipes.smelting().addSmelting(ForbiddenBlocks.DeathWood.blockID, 0, new ItemStack(ForbiddenBlocks.CorruptedBark, 1, 0), 1.0f);
+    	FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxShard.itemID, 0, new ItemStack(ForbiddenItems.ParadoxCrystal, 1, 0), 1.0f);
     	FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxDust.itemID, 0, new ItemStack(ForbiddenItems.ParadoxShard, 1, 0), 1.0f);
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.DeathPlanks, 4), new Object[]{new ItemStack(ForbiddenBlocks.DeathWood)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.Thorns, 4), new Object[]{new ItemStack(ForbiddenBlocks.ThornShrub)});
@@ -28,7 +28,6 @@ public class ForbiddenRecipes {
 		GameRegistry.addRecipe(new ItemStack(Item.hoeWood, 1),new Object[]{"0LL", "0S0", "0S0", 'L', ForbiddenBlocks.DeathPlanks, 'S', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(Block.chest), new Object[]{"WWW", "W0W", "WWW", 'W', ForbiddenBlocks.DeathPlanks});
         GameRegistry.addRecipe(new ItemStack(Item.saddle), new Object[]{"ABA", "AAA", "S00", 'A', Item.leather, 'B', Block.cloth, 'S', Item.silk});   
-        GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxCrystal), new Object[]{"AAA", "AAA", "AAA", 'A', ForbiddenItems.ParadoxShard});   
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxPick), new Object[]{"AAA", "0S0", "0S0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.stick});
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxSword), new Object[]{"0A0", "0A0", "0S0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.stick});
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxBow), new Object[]{"SA0", "S0A", "SA0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.silk});
