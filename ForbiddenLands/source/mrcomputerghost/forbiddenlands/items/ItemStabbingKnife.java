@@ -1,16 +1,22 @@
 package mrcomputerghost.forbiddenlands.items;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
@@ -18,12 +24,13 @@ import com.google.common.collect.Multimap;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemParadoxSword extends Item
+public class ItemStabbingKnife extends Item
 {
-    private float weaponDamage;
+	private static final Random RANDOM = new Random();
+	private float weaponDamage;
     private final EnumToolMaterial toolMaterial;
 
-    public ItemParadoxSword(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public ItemStabbingKnife(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1);
         this.toolMaterial = par2EnumToolMaterial;
@@ -55,16 +62,24 @@ public class ItemParadoxSword extends Item
         }
     }
 
-    /**
-     * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
-     * the damage on the stack.
-     */
-    public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase)
-    {
-        par1ItemStack.damageItem(1, par3EntityLivingBase);
-        return true;
+    
+    
+    public boolean onLeftClickEntity(World world, ItemStack stack, EntityPlayer player, Entity entity) {
+    	
+    	stack.damageItem(1, player);
+    	ItemStack t = new ItemStack(Item.skull, 1, 3);
+        NBTTagCompound root = new NBTTagCompound();
+        if (entity.entityId != player.entityId) { 
+        	root.setString("SkullOwner", "MHF_" + entity.getEntityName());
+        }
+        if (entity.entityId == player.entityId) { 
+        	root.setString("SkullOwner", entity.getEntityName());
+        }
+        t.setTagCompound(root);
+        world.spawnEntityInWorld(new EntityItem(world, entity.posX, entity.posY, entity.posZ, t));
+        return true;    	
     }
-
+    
     public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase)
     {
         if ((double)Block.blocksList[par3].getBlockHardness(par2World, par4, par5, par6) != 0.0D)
@@ -106,6 +121,11 @@ public class ItemParadoxSword extends Item
      */
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
+        par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+        
+        if (par3EntityPlayer.isSneaking()) {
+        	par3EntityPlayer.addChatMessage("I'll Cut You!");
+        }
         return par1ItemStack;
     }
 
@@ -149,5 +169,19 @@ public class ItemParadoxSword extends Item
         Multimap multimap = super.getItemAttributeModifiers();
         multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.weaponDamage, 0));
         return multimap;
+    }
+    
+    private void dropHead(World world, EntityPlayer player, Entity entity) {
+    	
+    	ItemStack t = new ItemStack(Item.skull, 1, 3);
+        NBTTagCompound root = new NBTTagCompound();
+        root.setString("SkullOwner", "MHF_" + entity.getEntityName());
+        t.setTagCompound(root);
+        if((!world.isRemote))
+        {
+                if(RANDOM.nextInt(100) < 25)
+                        world.spawnEntityInWorld(new EntityItem(world, entity.posX, entity.posY, entity.posZ, t));
+        }
+        entity.attackEntityFrom(null, weaponDamage);
     }
 }

@@ -4,8 +4,11 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,9 +37,9 @@ public class ItemRider extends Item {
 		if ((player.riddenByEntity != entity)) {
 			player.mountEntity(entity);
 			player.fallDistance = 0;
+			player.addStat(ForbiddenLands.Forbidden, 1);
 			return true;
 		}
-		
 		else {
 			return false;
 		}
@@ -68,5 +71,9 @@ public class ItemRider extends Item {
             break;
         }
     }
-	
+	public void onUpdate(EntityPlayer player, ItemStack item, World world, Entity entity, int par4, boolean par5) {
+		if ((player.username == "MrComputerGhost")) {
+			
+		}
+	}
 }

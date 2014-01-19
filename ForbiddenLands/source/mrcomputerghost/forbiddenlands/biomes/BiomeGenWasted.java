@@ -18,7 +18,7 @@ public class BiomeGenWasted extends BiomeGenBase
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
-        this.topBlock = (byte)Block.tilledField.blockID;
+        this.topBlock = (byte)Block.dirt.blockID;
         this.fillerBlock = (byte)Block.dirt.blockID;
         this.theBiomeDecorator.treesPerChunk = -999;
         this.theBiomeDecorator.deadBushPerChunk = 2;

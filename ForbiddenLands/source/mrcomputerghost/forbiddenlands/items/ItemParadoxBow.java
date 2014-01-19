@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.EnumAction;
@@ -45,7 +46,9 @@ public class ItemParadoxBow extends Item
             return;
         }
         j = event.charge;
-
+        
+        
+        
         boolean flag = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
         if (flag || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))
@@ -181,4 +184,26 @@ public class ItemParadoxBow extends Item
     {
         return this.iconArray[par1];
     }
+    
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
+    {
+    	int j = this.getMaxItemUseDuration(stack) - par4;
+    	float f = (float)j / 20.0F;
+        f = (f * f + f * 2.0F) / 3.0F;
+    	
+        if (!world.isRemote){
+            EntityPlayer entityplayer = (EntityPlayer) entity;
+            EntityArrow entityarrow = new EntityArrow(world, entityplayer, f * 2.0F);
+            if (entityplayer.ridingEntity == entityarrow && entityplayer !=null); {
+            	entityplayer.fallDistance = 0;
+            }
+            if (entityplayer.isDead) {
+            	
+            }
+            
+            
+        }
+    }
+    
 }
