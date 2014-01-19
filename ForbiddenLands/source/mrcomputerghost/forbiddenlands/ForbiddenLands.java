@@ -41,7 +41,7 @@ import net.minecraft.stats.Achievement;
 
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.0")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.1")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
