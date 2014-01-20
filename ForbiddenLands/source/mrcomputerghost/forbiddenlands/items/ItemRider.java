@@ -37,7 +37,6 @@ public class ItemRider extends Item {
 		if ((player.riddenByEntity != entity)) {
 			player.mountEntity(entity);
 			player.fallDistance = 0;
-			player.addStat(ForbiddenLands.Forbidden, 1);
 			return true;
 		}
 		else {

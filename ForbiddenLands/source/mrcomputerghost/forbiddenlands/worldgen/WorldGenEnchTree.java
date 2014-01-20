@@ -2,6 +2,7 @@ package mrcomputerghost.forbiddenlands.worldgen;
 
 import java.util.Random;
 
+import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.world.World;
@@ -101,7 +102,7 @@ public class WorldGenEnchTree extends WorldGenerator
 
                                     if (block == null || block.canBeReplacedByLeaves(par1World, l1, i2, k2))
                                     {
-                                        this.setBlockAndMetadata(par1World, l1, i2, k2, Block.leaves.blockID, 2);
+                                        this.setBlockAndMetadata(par1World, l1, i2, k2, ForbiddenBlocks.EnchLeaves.blockID, 2);
                                     }
                                 }
                             }
@@ -118,7 +119,7 @@ public class WorldGenEnchTree extends WorldGenerator
                             block.isAirBlock(par1World, par3, par4 + i2, par5) || 
                             block.isLeaves(par1World, par3, par4 + i2, par5))
                         {
-                            this.setBlockAndMetadata(par1World, par3, par4 + i2, par5, Block.wood.blockID, 2);
+                            this.setBlockAndMetadata(par1World, par3, par4 + i2, par5, ForbiddenBlocks.EnchBark.blockID, 2);
                         }
                     }
 

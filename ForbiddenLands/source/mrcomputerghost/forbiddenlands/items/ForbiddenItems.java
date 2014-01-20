@@ -50,7 +50,7 @@ public class ForbiddenItems {
 	public static int DebuggerDefaultID = 4257;
 	
 	public static final EnumToolMaterial EnumToolParadox = EnumHelper.addToolMaterial("Paradox", 3, 2570, 10.0F, 4.5F, 35);
-	public static final EnumToolMaterial EnumToolStab = EnumHelper.addToolMaterial("Paradox", 3, 2570, 6.0F, 4.5F, 50);
+	//public static final EnumToolMaterial EnumToolStab = EnumHelper.addToolMaterial("Paradox", 3, 2570, 6.0F, 4.5F, 50);
 	public static final EnumArmorMaterial EnumArmorParadox = EnumHelper.addArmorMaterial("Paradox", 33, new int[]{3, 8, 6, 3}, 35);
 	
 	
@@ -89,9 +89,9 @@ public class ForbiddenItems {
 		ParadoxBow = new ItemParadoxBow(ParadoxBowDefaultID).setUnlocalizedName("Paradox Bow").setTextureName("forbiddenlands:bonebow").setCreativeTab(ForbiddenLands.ForbiddenTab);
 		GameRegistry.registerItem(ParadoxBow, "Paradox Bow");
 		LanguageRegistry.addName(ParadoxBow, "Paradox Rocket");
-		StabbbingKnife = new ItemStabbingKnife(StabbingKnifeDefaultID, EnumToolStab).setUnlocalizedName("Stabbing Knife").setTextureName("forbiddenlands:StabbingKnife").setCreativeTab(ForbiddenLands.ForbiddenTab);
+		/**StabbbingKnife = new ItemStabbingKnife(StabbingKnifeDefaultID, EnumToolStab).setUnlocalizedName("Stabbing Knife").setTextureName("forbiddenlands:StabbingKnife").setCreativeTab(ForbiddenLands.ForbiddenTab);
 		GameRegistry.registerItem(StabbbingKnife, "Stabbing Knife");
-		LanguageRegistry.addName(StabbbingKnife, "Stabbing Knife");
+		LanguageRegistry.addName(StabbbingKnife, "Stabbing Knife");**/
 		Debugger = new ItemDebugger(DebuggerDefaultID).setUnlocalizedName("Debugger").setTextureName("minecraft:command");
 		GameRegistry.registerItem(Debugger, "Debugger");
 		LanguageRegistry.addName(Debugger, "Debugger");

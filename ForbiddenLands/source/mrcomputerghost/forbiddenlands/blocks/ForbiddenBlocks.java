@@ -23,6 +23,10 @@ public class ForbiddenBlocks {
 	public static Block Thorns;
 	public static Block CorruptedBark;
 	public static Block FBPortal;
+	public static Block ParadoxFire;
+	public static Block EnchBark;
+	public static Block EnchPlanks;
+	public static Block EnchLeaves;
 	
 	public static int DeathWoodDefaultID;
 	public static int DeathLeavesDefaultID;
@@ -32,6 +36,10 @@ public class ForbiddenBlocks {
 	public static int ThornsDefaultID;
 	public static int CorruptedBarkDefaultID;
 	public static int FBPortalDefaultID;
+	public static int ParadoxFireDefaultID;
+	public static int EnchBarkDefaultID;
+	public static int EnchPlanksDefaultID;
+	public static int EnchLeavesDefaultID;
 	
 	public static void initBlocks()
 	{
@@ -43,6 +51,10 @@ public class ForbiddenBlocks {
 		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(0.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		CorruptedBark = new BlockCorruptedBark(4048, "CorruptedBark").setUnlocalizedName("CorruptedBark").setHardness(0.7F).setStepSound(Block.soundLadderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		//FBPortal = new BlockFBPortal(4049).setUnlocalizedName("FBPortal").setBlockUnbreakable().setStepSound(Block.soundGlassFootstep).setResistance(10.0F).setCreativeTab(CreativeTabs.tabAllSearch);
+		ParadoxFire = new BlockParadoxFire(4050).setUnlocalizedName("ParadoxFire").setBlockUnbreakable().setStepSound(Block.soundAnvilFootstep).setResistance(0.0F).setCreativeTab(CreativeTabs.tabAllSearch);
+		EnchBark = new BlockEnchantedBark(4051, "EnchBark").setUnlocalizedName("EnchBark").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		EnchPlanks = new BlockEnchPlanks(4052, "EnchPlanks").setUnlocalizedName("EnchPlanks").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		EnchLeaves = new BlockEnchLeaves(4053, "EnchLeaves").setUnlocalizedName("EnchLeaves").setHardness(0.2F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
@@ -51,6 +63,9 @@ public class ForbiddenBlocks {
 		GameRegistry.registerBlock(ThornShrub, "ThornShrub");
 		GameRegistry.registerBlock(Thorns, "Thorns");
 		GameRegistry.registerBlock(CorruptedBark, "CorruptedBark");
+		GameRegistry.registerBlock(ParadoxFire, "ParadoxFire");
+		GameRegistry.registerBlock(EnchBark, "EnchBark");
+		GameRegistry.registerBlock(EnchPlanks, "EnchPlanks");
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
@@ -59,6 +74,9 @@ public class ForbiddenBlocks {
 		LanguageRegistry.addName(ThornShrub, "Thorn Shrub");
 		LanguageRegistry.addName(Thorns, "Deadly Sharp Thorns");
 		LanguageRegistry.addName(CorruptedBark, "Corrupted Barks");
+		LanguageRegistry.addName(ParadoxFire, "Paradox Fire");
+		LanguageRegistry.addName(EnchBark, "Enchanted Bark");
+		LanguageRegistry.addName(EnchPlanks, "Enchanted Planks");
 		
 		MinecraftForge.addGrassPlant(ThornShrub, 0, 25);
 		MinecraftForge.addGrassSeed(new ItemStack(Item.pumpkinSeeds), 25);
@@ -66,8 +84,7 @@ public class ForbiddenBlocks {
 		MinecraftForge.addGrassSeed(new ItemStack(ThornShrub), 5);
 		ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(ForbiddenBlocks.DeathPlanks), 1, 5, 25));
 		ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(ForbiddenBlocks.DeathPlanks), 1, 5, 25));
-		
-		
+				
 		
 	}
 

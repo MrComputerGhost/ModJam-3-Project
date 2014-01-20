@@ -17,7 +17,7 @@ public class ForbiddenRecipes {
     	FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxShard.itemID, 0, new ItemStack(ForbiddenItems.ParadoxCrystal, 1, 0), 1.0f);
     	FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxDust.itemID, 0, new ItemStack(ForbiddenItems.ParadoxShard, 1, 0), 1.0f);
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.DeathPlanks, 4), new Object[]{new ItemStack(ForbiddenBlocks.DeathWood)});
-		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.Thorns, 4), new Object[]{new ItemStack(ForbiddenBlocks.ThornShrub)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.Thorns, 1), new Object[]{new ItemStack(ForbiddenBlocks.ThornShrub)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.stick, 4), new Object[]{new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Block.workbench), new Object[]{new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenItems.Rider, 4), new Object[]{new ItemStack(Item.leash), new ItemStack(Item.saddle)});

@@ -112,10 +112,10 @@ public class BlockThorns extends Block
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
    
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity)
     {
     
-    		par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
+    		entity.attackEntityFrom(DamageSource.causeThornsDamage(entity), 1.5F);
     		
     }
 }

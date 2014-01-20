@@ -2,8 +2,10 @@ package mrcomputerghost.forbiddenlands.biomes;
 
 import java.util.Random;
 
+import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilForest1;
 import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilForest2;
+import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilForest3;
 import mrcomputerghost.forbiddenlands.worldgen.WorldGenEvilWell;
 import net.minecraft.block.Block;
 import net.minecraft.entity.boss.EntityWither;
@@ -18,6 +20,8 @@ import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
+import net.minecraft.world.gen.feature.WorldGenDeadBush;
+import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
@@ -27,7 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BiomeGenThorns extends BiomeGenBase
 {
     
-
+	public static boolean UseOldThornBushes;
+	
 	public WorldGenMinable theWorldGenerator;
 
 	public BiomeGenThorns(int par1)
@@ -68,7 +73,13 @@ public class BiomeGenThorns extends BiomeGenBase
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-    	 return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest2(false));
+    	if (!this.UseOldThornBushes) {
+    	return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest3(ForbiddenBlocks.ThornShrub.blockID));
+    	}
+    	else if (this.UseOldThornBushes) {
+    		return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest2(false));	
+    	}
+    	else return null;
     }
 
     @SideOnly(Side.CLIENT)
@@ -104,12 +115,19 @@ public class BiomeGenThorns extends BiomeGenBase
     {
         super.decorate(par1World, par2Random, par3, par4);
 
-        if (par2Random.nextInt(3000) == 0)
+        if (par2Random.nextInt(42) == 0)
         {
             int k = par3 + par2Random.nextInt(16) + 8;
             int l = par4 + par2Random.nextInt(16) + 8;
             WorldGenEvilWell worldgenevilwell = new WorldGenEvilWell();
             worldgenevilwell.generate(par1World, par2Random, k, par1World.getHeightValue(k, l) + 1, l);
+        }
+        if (par2Random.nextInt(16) == 2)
+        {
+            int k = par3 + par2Random.nextInt(16) + 8;
+            int l = par4 + par2Random.nextInt(16) + 8;
+            WorldGenDungeons worldgendungeons = new WorldGenDungeons();
+            worldgendungeons.generate(par1World, par2Random, k, par1World.getHeightValue(k, l) + 1, l);
         }
     }
 }

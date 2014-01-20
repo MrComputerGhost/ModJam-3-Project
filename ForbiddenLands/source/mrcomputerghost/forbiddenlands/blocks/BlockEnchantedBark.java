@@ -11,10 +11,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockDeathWood extends Block
+public class BlockEnchantedBark extends Block
 {
 
-	public BlockDeathWood(int par1, String texture) 
+	public BlockEnchantedBark(int par1, String texture) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
@@ -35,7 +35,7 @@ public class BlockDeathWood extends Block
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:log_death");
+            this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:log_ench");
     }
 	
 	/**
@@ -48,7 +48,7 @@ public class BlockDeathWood extends Block
 
             if (par5Random.nextInt(2) == 0)
             {
-                    par1World.spawnParticle("smoke", par2 + par5Random.nextFloat(), par3 + 1.1F, par4 + par5Random.nextFloat(), 0.0D, 0.0D, 0.0D);
+                    par1World.spawnParticle("townaura", par2 + par5Random.nextFloat(), par3 + 1.1F, par4 + par5Random.nextFloat(), 0.0D, 0.0D, 0.0D);
             }
     }
     
