@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEnchantedForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEvilForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenGraves;
@@ -22,6 +24,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
@@ -30,6 +33,7 @@ import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.ICraftingHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -41,18 +45,17 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.stats.Achievement;
+import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.Icon;
 
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.5")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.7")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
-	
-	public static int probabilityOfBecomingAware;
-	
-	
+			
 	@Instance("ForbiddenLands")
 	public static ForbiddenLands instance;
         
@@ -67,9 +70,9 @@ public class ForbiddenLands
 	public static BiomeGenBase Wasted;
 	public static BiomeGenBase EnchantedForest;
 	public static BiomeGenBase EnchantedForestHills;
-	public static BiomeGenBase ForbiddenHills;
 	public static BiomeGenBase Graveyard;
-        
+	public static BiomeGenBase ForbiddenHills;  
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -102,6 +105,7 @@ public class ForbiddenLands
 		EnchantedForest = new BiomeGenEnchantedForest(45).setColor(10000).setBiomeName("Enchanted Forest").setMinMaxHeight(-0.2F, 0.2F).setDisableRain();
 		EnchantedForestHills = new BiomeGenEnchantedForest(46).setColor(10000).setBiomeName("Enchanted Forest Hills").setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
 		Graveyard = new BiomeGenGraves(47).setColor(99999).setBiomeName("Graveyard").setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
+		ForbiddenHills = new BiomeGenEvilForest(48).setColor(616363).setBiomeName("Forbidden Forest Hills").setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
 		
 		GameRegistry.addBiome(ForbiddenLandsBiome);
 		GameRegistry.addBiome(ThornForest);
@@ -109,24 +113,29 @@ public class ForbiddenLands
 		GameRegistry.addBiome(EnchantedForest);
 		GameRegistry.addBiome(EnchantedForestHills);
 		GameRegistry.addBiome(Graveyard);
+		GameRegistry.addBiome(ForbiddenHills);
 		BiomeManager.addSpawnBiome(ForbiddenLandsBiome);
 		BiomeManager.addSpawnBiome(ThornForest);
 		BiomeManager.addSpawnBiome(Wasted);
 		BiomeManager.addSpawnBiome(EnchantedForest);
 		BiomeManager.addSpawnBiome(EnchantedForestHills);
+		BiomeManager.addSpawnBiome(Graveyard);
 		BiomeManager.addVillageBiome(EnchantedForest, true);
 		BiomeManager.addVillageBiome(EnchantedForestHills, true);
 		BiomeManager.addVillageBiome(Wasted, false);
 		BiomeManager.addVillageBiome(ForbiddenLandsBiome, false);
 		BiomeManager.addStrongholdBiome(ForbiddenLandsBiome);
 		BiomeManager.addStrongholdBiome(EnchantedForestHills);
+		BiomeManager.addStrongholdBiome(Graveyard);
 		BiomeDictionary.registerAllBiomesAndGenerateEvents();
 		
 		
 		
-		
-		
-		
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.registerRenderThings();
 	}
 	
 	@EventHandler
@@ -147,19 +156,21 @@ public class ForbiddenLands
 
 	private void addAchievementDesc(String ach, String desc)
 	{
-	LanguageRegistry.instance().addStringLocalization("achievement." + ach + ".desc", "en_US", desc);**/
-	//}
+	LanguageRegistry.instance().addStringLocalization("achievement." + ach + ".desc", "en_US", desc);
+	}**/
 	
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-    	
+    	//logger.info("Forbidden Lands Mod Loaded Up!");
     }
     
     
-	public ForbiddenLands()
+	public ForbiddenLands() 
 	{
-		     
+		
+		//JOptionPane.showMessageDialog(null, "Warning: \n This version of Forbidden Lands is very unstable \n and will most likely break. \n You have been warned.", null, JOptionPane.WARNING_MESSAGE);
+		
 	}
 	
 }

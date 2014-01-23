@@ -1,11 +1,8 @@
-/*
-*** MADE BY MITHION'S .SCHEMATIC TO JAVA CONVERTING TOOL v1.6 ***
-*/
-
 package mrcomputerghost.forbiddenlands.worldgen;
 
 import java.util.Random;
 
+import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.WeightedRandomChestContent;
@@ -128,6 +125,7 @@ public class WorldGenCrypt extends WorldGenerator
 		world.setBlock(i + 3, j + 1, k + 5, Block.stairsCobblestone.blockID, 3, 3);
 		world.setBlock(i + 3, j + 2, k + 2, Block.stoneSingleSlab.blockID);
 		world.setBlock(i + 3, j + 2, k + 3, Block.silverfish.blockID, 2, 2);
+		world.setBlock(i + 3, j + 3, k + 3, ForbiddenBlocks.TombStone.blockID, 2, 2);
 		world.setBlock(i + 3, j + 2, k + 4, Block.stoneSingleSlab.blockID);
 		world.setBlock(i + 3, j + 5, k + 2, Block.stairsCobblestone.blockID, 2, 2);
 		world.setBlock(i + 3, j + 5, k + 3, Block.silverfish.blockID, 1, 1);

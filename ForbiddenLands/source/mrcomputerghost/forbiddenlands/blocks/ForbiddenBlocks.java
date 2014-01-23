@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,6 +28,7 @@ public class ForbiddenBlocks {
 	public static Block EnchBark;
 	public static Block EnchPlanks;
 	public static Block EnchLeaves;
+	public static Block TombStone;
 	
 	public static int DeathWoodDefaultID;
 	public static int DeathLeavesDefaultID;
@@ -40,6 +42,8 @@ public class ForbiddenBlocks {
 	public static int EnchBarkDefaultID;
 	public static int EnchPlanksDefaultID;
 	public static int EnchLeavesDefaultID;
+	public static int TombStoneDefaultID;
+
 	
 	public static void initBlocks()
 	{
@@ -53,8 +57,9 @@ public class ForbiddenBlocks {
 		//FBPortal = new BlockFBPortal(4049).setUnlocalizedName("FBPortal").setBlockUnbreakable().setStepSound(Block.soundGlassFootstep).setResistance(10.0F).setCreativeTab(CreativeTabs.tabAllSearch);
 		ParadoxFire = new BlockParadoxFire(4050).setUnlocalizedName("ParadoxFire").setBlockUnbreakable().setStepSound(Block.soundAnvilFootstep).setResistance(0.0F).setCreativeTab(CreativeTabs.tabAllSearch);
 		EnchBark = new BlockEnchantedBark(4051, "EnchBark").setUnlocalizedName("EnchBark").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
-		EnchPlanks = new BlockEnchPlanks(4052, "EnchPlanks").setUnlocalizedName("EnchPlanks").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
-		EnchLeaves = new BlockEnchLeaves(4053, "EnchLeaves").setUnlocalizedName("EnchLeaves").setHardness(0.2F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		EnchPlanks = new BlockEnchPlanks(4052, "EnchPlanks").setUnlocalizedName("EnchPlanks").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations);
+		EnchLeaves = new BlockEnchLeaves(4053, "EnchLeaves").setUnlocalizedName("EnchLeaves").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations);
+		TombStone = new BlockTombStone(4054, false).setUnlocalizedName("TombStone").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations).setTextureName("forbiddenlands:grave");
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
@@ -66,6 +71,8 @@ public class ForbiddenBlocks {
 		GameRegistry.registerBlock(ParadoxFire, "ParadoxFire");
 		GameRegistry.registerBlock(EnchBark, "EnchBark");
 		GameRegistry.registerBlock(EnchPlanks, "EnchPlanks");
+		GameRegistry.registerBlock(EnchLeaves, "EnchLeaves");
+		GameRegistry.registerBlock(TombStone, "TombStone");
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
@@ -77,6 +84,8 @@ public class ForbiddenBlocks {
 		LanguageRegistry.addName(ParadoxFire, "Paradox Fire");
 		LanguageRegistry.addName(EnchBark, "Enchanted Bark");
 		LanguageRegistry.addName(EnchPlanks, "Enchanted Planks");
+		LanguageRegistry.addName(EnchLeaves, "Enchanted Leaves");
+		LanguageRegistry.addName(TombStone, "Tomb Stone");
 		
 		MinecraftForge.addGrassPlant(ThornShrub, 0, 25);
 		MinecraftForge.addGrassSeed(new ItemStack(Item.pumpkinSeeds), 25);

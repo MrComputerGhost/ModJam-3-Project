@@ -1,8 +1,14 @@
 package mrcomputerghost.forbiddenlands;
 
-import cpw.mods.fml.common.registry.EntityRegistry;
+import mrcomputerghost.forbiddenlands.tileentities.TileEntityTombStone;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class CommonProxy {
 
+	public void registerRenderThings() {
 
+        GameRegistry.registerTileEntity(TileEntityTombStone.class, "TombStone");
+	}
+	
 }
