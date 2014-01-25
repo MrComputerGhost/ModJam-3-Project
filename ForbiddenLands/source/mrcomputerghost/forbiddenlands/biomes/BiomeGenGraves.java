@@ -65,5 +65,10 @@ public class BiomeGenGraves extends BiomeGenBase
     {
         return new WorldGenGrave();
     }
-
+    
+    public int getSkyColorByTemp(float par1)
+    {
+        return 0;
+    }
+    
 }

@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BiomeGenThorns extends BiomeGenBase
 {
     
-	public static boolean UseOldThornBushes;
+	public static boolean useOldThornBushes;
 	
 	public WorldGenMinable theWorldGenerator;
 
@@ -73,10 +73,10 @@ public class BiomeGenThorns extends BiomeGenBase
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-    	if (!this.UseOldThornBushes) {
+    	if (!this.useOldThornBushes) {
     	return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest3(ForbiddenBlocks.ThornShrub.blockID));
     	}
-    	else if (this.UseOldThornBushes) {
+    	else if (this.useOldThornBushes) {
     		return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenEvilForest1() : new WorldGenEvilForest2(false));	
     	}
     	else return null;

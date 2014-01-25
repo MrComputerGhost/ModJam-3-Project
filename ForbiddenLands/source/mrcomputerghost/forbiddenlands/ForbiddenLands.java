@@ -16,6 +16,7 @@ import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.handlers.CraftingHandler;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
+import mrcomputerghost.forbiddenlands.worldgen.WorldGenGrave;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
@@ -88,13 +89,17 @@ public class ForbiddenLands
         ForbiddenBlocks.ThornShrubDefaultID = config.getBlock("Thorn Shrub", 4046).getInt();
         ForbiddenBlocks.ThornsDefaultID = config.getBlock("Thorns", 4047).getInt();
         ForbiddenBlocks.CorruptedBarkDefaultID = config.getBlock("Corrupted Bark", 4048).getInt();
-        BiomeGenThorns.UseOldThornBushes = config.get("BiomeStuff", "UseOldThornBushes", false).getBoolean(false);
+        BiomeGenThorns.useOldThornBushes = config.get("Biome Stuff", "Use Old Thorn Bushes", false).getBoolean(false);
+        WorldGenGrave.useCustomGrave = config.get("Biome Stuff", "Use Custom Grave", true).getBoolean(true);
         
         config.save();
         
-        ForbiddenBlocks.initBlocks(); 
+        ForbiddenBlocks.initBlocks();
+        logger.info("Initialized " + "Forbidden Lands Blocks");
         ForbiddenItems.initItems();
+        logger.info("Initialized " + "Forbidden Lands Items");
         ForbiddenRecipes.initRecipes();
+        logger.info("Initialized " + "Forbidden Lands Recipes");
         
         LanguageRegistry.instance().addStringLocalization("itemGroup.ForbiddenLands", "ForbiddenLands");
         
@@ -162,7 +167,7 @@ public class ForbiddenLands
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-    	//logger.info("Forbidden Lands Mod Loaded Up!");
+    	logger.info("Forbidden Lands Mod Loaded Up!");
     }
     
     
