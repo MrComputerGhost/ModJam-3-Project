@@ -2,6 +2,7 @@ package mrcomputerghost.forbiddenlands.blocks;
 
 import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
+import net.minecraft.block.EnumMobType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -51,7 +52,7 @@ public class ForbiddenBlocks {
 		DeathLeaves = new BlockDeathLeaves(4043, "DeathLeaves").setUnlocalizedName("DeathLeaves").setHardness(0.0F).setStepSound(Block.soundPowderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		DeathPlanks = new BlockDeathPlanks(4044, "DeathPlanks").setUnlocalizedName("DeathPlanks").setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		DeadGrass = new BlockDeadGrass(4045, "DeadGrass").setUnlocalizedName("DeadGrass").setHardness(1.0F).setStepSound(Block.soundGrassFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
-		ThornShrub = new BlockThornShrub(4046, "ThornShrub").setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
+		ThornShrub = new BlockThornShrub(4046, "ThornShrub", EnumMobType.everything).setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(0.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		CorruptedBark = new BlockCorruptedBark(4048, "CorruptedBark").setUnlocalizedName("CorruptedBark").setHardness(0.7F).setStepSound(Block.soundLadderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		//FBPortal = new BlockFBPortal(4049).setUnlocalizedName("FBPortal").setBlockUnbreakable().setStepSound(Block.soundGlassFootstep).setResistance(10.0F).setCreativeTab(CreativeTabs.tabAllSearch);

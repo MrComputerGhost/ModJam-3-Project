@@ -31,6 +31,8 @@ public class ForbiddenItems {
 	public static Item ParadoxBoots;
 	public static Item StabbbingKnife;
 	public static Item Debugger;
+	public static Item LParadoxCrystal;
+	public static Item ParadoxStaff;
 	
 	public static int PureBarkDefaultID = 4242;
 	public static int RiderDefaultID = 4243;
@@ -48,6 +50,8 @@ public class ForbiddenItems {
 	public static int ParadoxBootsDefaultID = 4255;
 	public static int StabbingKnifeDefaultID = 4256;
 	public static int DebuggerDefaultID = 4257;
+	public static int LParadoxCrystalDefaultID = 4258;
+	public static int ParadoxStaffDefaultID = 4259;
 	
 	public static final EnumToolMaterial EnumToolParadox = EnumHelper.addToolMaterial("Paradox", 3, 2570, 10.0F, 4.5F, 35);
 	//public static final EnumToolMaterial EnumToolStab = EnumHelper.addToolMaterial("Paradox", 3, 2570, 6.0F, 4.5F, 50);
@@ -95,6 +99,9 @@ public class ForbiddenItems {
 		Debugger = new ItemDebugger(DebuggerDefaultID).setUnlocalizedName("Debugger").setTextureName("minecraft:command");
 		GameRegistry.registerItem(Debugger, "Debugger");
 		LanguageRegistry.addName(Debugger, "Debugger");
+		ParadoxStaff = new ItemParadoxStaff(ParadoxStaffDefaultID, EnumToolParadox).setUnlocalizedName("ParadoxStaff");
+		GameRegistry.registerItem(ParadoxStaff, "ParadoxStaff");
+		LanguageRegistry.addName(ParadoxStaff, "Paradox Staff");
 		/*ParadoxHelm = (new ItemParadoxArmor(ParadoxHelmDefaultID, EnumArmorParadox, 0).setUnlocalizedName("Paradox Helm").setCreativeTab(ForbiddenLands.ForbiddenTab));
 		ParadoxChest = (new ItemParadoxArmor(ParadoxChestDefaultID, EnumArmorParadox, 1).setUnlocalizedName("Paradox Chest").setCreativeTab(ForbiddenLands.ForbiddenTab));
 		ParadoxLegs = (new ItemParadoxArmor(ParadoxLegsDefaultID, EnumArmorParadox, 2).setUnlocalizedName("Paradox Legs").setCreativeTab(ForbiddenLands.ForbiddenTab));

@@ -3,6 +3,7 @@ package mrcomputerghost.forbiddenlands.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mrcomputerghost.forbiddenlands.ForbiddenLands;
+import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.tileentities.TileEntityTombStone;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -11,6 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,8 +38,16 @@ public class BlockTombStone extends BlockContainer {
         }
 
         public boolean onBlockActivated(Entity entity, World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-
-                return false;
+        		if(player.inventory.getCurrentItem().itemID == ForbiddenItems.ParadoxStaff.itemID) {
+        			world.setBlockToAir(x, y, z);
+        			EntityZombie zombie = new EntityZombie(world);
+        			world.spawnEntityInWorld(zombie);
+        			if(!world.isRemote) {
+        	            world.addWeatherEffect(new EntityLightningBolt(world, x, y, z));
+        	        }
+        			return true;
+        		} else return false;
+                
         }
         
         
@@ -65,6 +75,13 @@ public class BlockTombStone extends BlockContainer {
         @SideOnly(Side.CLIENT)
         public void registerIcons(IconRegister par1IconRegister) {
                 this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:grave");
+        }
+        
+        private void lightningStrike(World world, EntityPlayer player, int x, int y, int z) {
+        		
+            if(!world.isRemote) {
+            world.addWeatherEffect(new EntityLightningBolt(world, x, y, z));
+            }
         }
 
 }

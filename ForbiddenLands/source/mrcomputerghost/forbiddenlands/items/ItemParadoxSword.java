@@ -22,7 +22,7 @@ public class ItemParadoxSword extends Item
 {
     private float weaponDamage;
     private final EnumToolMaterial toolMaterial;
-
+    
     public ItemParadoxSword(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1);

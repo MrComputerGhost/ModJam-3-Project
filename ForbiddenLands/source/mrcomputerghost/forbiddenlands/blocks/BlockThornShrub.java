@@ -1,13 +1,18 @@
 package mrcomputerghost.forbiddenlands.blocks;
 
+import java.util.List;
 import java.util.Random;
 
 import mrcomputerghost.forbiddenlands.ForbiddenLands;
 import net.minecraft.block.Block;
+import net.minecraft.block.EnumMobType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Icon;
@@ -17,11 +22,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockThornShrub extends Block
 {
-
-	public BlockThornShrub(int par1, String texture) 
+	public EnumMobType triggerMobType;
+	public BlockThornShrub(int par1, String texture, EnumMobType par4EnumMobType) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
+            this.triggerMobType = par4EnumMobType;
     }
 
     public int idDropped(int par1, Random par2Random, int par3)
@@ -109,9 +115,9 @@ public class BlockThornShrub extends Block
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
    
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity, EntityPlayer player)
     {
-        par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
+    	par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
     }
     
     @Override
