@@ -55,7 +55,7 @@ public class ForbiddenBlocks {
 		ThornShrub = new BlockThornShrub(4046, "ThornShrub").setUnlocalizedName("ThornShrub").setHardness(1.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		Thorns = new BlockThorns(4047, "Thorns").setUnlocalizedName("Thorns").setHardness(0.5F).setStepSound(Block.soundLadderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		CorruptedBark = new BlockCorruptedBark(4048, "CorruptedBark").setUnlocalizedName("CorruptedBark").setHardness(0.7F).setStepSound(Block.soundLadderFootstep).setResistance(0.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
-		//FBPortal = new BlockFBPortal(4049).setUnlocalizedName("FBPortal").setBlockUnbreakable().setStepSound(Block.soundGlassFootstep).setResistance(10.0F).setCreativeTab(CreativeTabs.tabAllSearch);
+		FBPortal = new BlockFLPortal(4049).setUnlocalizedName("FBPortal").setBlockUnbreakable().setStepSound(Block.soundGlassFootstep).setResistance(10.0F).setCreativeTab(CreativeTabs.tabAllSearch);
 		ParadoxFire = new BlockParadoxFire(4050).setUnlocalizedName("ParadoxFire").setBlockUnbreakable().setStepSound(Block.soundAnvilFootstep).setResistance(0.0F).setCreativeTab(CreativeTabs.tabAllSearch);
 		EnchBark = new BlockEnchantedBark(4051, "EnchBark").setUnlocalizedName("EnchBark").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		EnchPlanks = new BlockEnchPlanks(4052, "EnchPlanks").setUnlocalizedName("EnchPlanks").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations);
@@ -69,11 +69,13 @@ public class ForbiddenBlocks {
 		GameRegistry.registerBlock(ThornShrub, "ThornShrub");
 		GameRegistry.registerBlock(Thorns, "Thorns");
 		GameRegistry.registerBlock(CorruptedBark, "CorruptedBark");
+		GameRegistry.registerBlock(FBPortal, "FBPortal");
 		GameRegistry.registerBlock(ParadoxFire, "ParadoxFire");
 		GameRegistry.registerBlock(EnchBark, "EnchBark");
 		GameRegistry.registerBlock(EnchPlanks, "EnchPlanks");
 		GameRegistry.registerBlock(EnchLeaves, "EnchLeaves");
 		GameRegistry.registerBlock(TombStone, "TombStone");
+		
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
@@ -82,6 +84,7 @@ public class ForbiddenBlocks {
 		LanguageRegistry.addName(ThornShrub, "Thorn Shrub");
 		LanguageRegistry.addName(Thorns, "Deadly Sharp Thorns");
 		LanguageRegistry.addName(CorruptedBark, "Corrupted Barks");
+		LanguageRegistry.addName(FBPortal, "Forbidden Portal Block");
 		LanguageRegistry.addName(ParadoxFire, "Paradox Fire");
 		LanguageRegistry.addName(EnchBark, "Enchanted Bark");
 		LanguageRegistry.addName(EnchPlanks, "Enchanted Planks");

@@ -13,6 +13,7 @@ import mrcomputerghost.forbiddenlands.biomes.BiomeGenGraves;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenThorns;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenWasted;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
+import mrcomputerghost.forbiddenlands.dim.ForbiddenDimensions;
 import mrcomputerghost.forbiddenlands.handlers.CraftingHandler;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
@@ -54,7 +55,7 @@ import net.minecraft.util.Icon;
 @Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.9")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
-{
+{	
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
 			
 	@Instance("ForbiddenLands")
@@ -100,7 +101,7 @@ public class ForbiddenLands
         logger.info("Initialized " + "Forbidden Lands Items");
         ForbiddenRecipes.initRecipes();
         logger.info("Initialized " + "Forbidden Lands Recipes");
-        
+        ForbiddenDimensions.initDims();
         
         
 		//Biomes
