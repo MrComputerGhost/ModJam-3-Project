@@ -14,9 +14,10 @@ public class ForbiddenRecipes {
     public static void initRecipes()
     {    
     	FurnaceRecipes.smelting().addSmelting(ForbiddenBlocks.DeathWood.blockID, 0, new ItemStack(ForbiddenBlocks.CorruptedBark, 1, 0), 1.0f);
-    	FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxShard.itemID, 0, new ItemStack(ForbiddenItems.ParadoxCrystal, 1, 0), 1.0f);
+    	//FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxShard.itemID, 0, new ItemStack(ForbiddenItems.ParadoxCrystal, 1, 0), 1.0f);
     	FurnaceRecipes.smelting().addSmelting(ForbiddenItems.ParadoxDust.itemID, 0, new ItemStack(ForbiddenItems.ParadoxShard, 1, 0), 1.0f);
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.DeathPlanks, 4), new Object[]{new ItemStack(ForbiddenBlocks.DeathWood)});
+		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenItems.ParadoxCrystal, 1), new Object[]{new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard), new ItemStack(ForbiddenItems.ParadoxShard)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.Thorns, 1), new Object[]{new ItemStack(ForbiddenBlocks.ThornShrub)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.stick, 4), new Object[]{new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Block.workbench), new Object[]{new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks), new ItemStack(ForbiddenBlocks.DeathPlanks)});
@@ -32,7 +33,7 @@ public class ForbiddenRecipes {
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxSword), new Object[]{"0A0", "0A0", "0S0", 'A', ForbiddenItems.ParadoxCrystal, 'S', Item.stick});
         GameRegistry.addRecipe(new ItemStack(ForbiddenBlocks.TombStone), new Object[]{"0A0", "AAA", "AAA", 'A', Block.cobblestone});
         GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxBow), new Object[]{"SA0", "SBA", "SA0", 'A', Block.wood, 'S', Item.silk, 'B', ForbiddenItems.Rider});
-        GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxStaff), new Object[]{"IPI", "0I0", "0I0", 'I', Item.ingotGold, 'P', ForbiddenItems.ParadoxCrystal});
+        GameRegistry.addRecipe(new ItemStack(ForbiddenItems.ParadoxStaff), new Object[]{"IPI", "0I0", "0I0", 'I', Block.blockGold, 'P', ForbiddenItems.ParadoxCrystal});
         GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.EnchPlanks, 4), new Object[]{new ItemStack(ForbiddenBlocks.EnchBark)});
 		GameRegistry.addShapelessRecipe(new ItemStack(ForbiddenBlocks.Thorns, 1), new Object[]{new ItemStack(ForbiddenBlocks.ThornShrub)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.stick, 4), new Object[]{new ItemStack(ForbiddenBlocks.EnchPlanks), new ItemStack(ForbiddenBlocks.EnchPlanks)});

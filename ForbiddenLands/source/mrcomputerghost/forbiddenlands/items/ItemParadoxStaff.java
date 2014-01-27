@@ -26,6 +26,7 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class ItemParadoxStaff extends ItemTool {
+	private static final Random RANDOM = new Random();
 	public static final Block[] blocksEffectiveAgainst = new Block[] {Block.grass, Block.dirt, Block.sand, Block.gravel, Block.snow, Block.blockSnow, Block.blockClay, Block.tilledField, Block.slowSand, Block.mycelium, Block.planks, Block.bookShelf, Block.wood, Block.chest, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.pumpkin, Block.pumpkinLantern, Block.cobblestone, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.stone, Block.sandStone, Block.cobblestoneMossy, Block.oreIron, Block.blockIron, Block.oreCoal, Block.blockGold, Block.oreGold, Block.oreDiamond, Block.blockDiamond, Block.ice, Block.netherrack, Block.oreLapis, Block.blockLapis, Block.oreRedstone, Block.oreRedstoneGlowing, Block.rail, Block.railDetector, Block.railPowered, Block.railActivator};
 	private float weaponDamage;
 	public ItemParadoxStaff(int par1, EnumToolMaterial par2EnumToolMaterial) {
@@ -81,9 +82,13 @@ public class ItemParadoxStaff extends ItemTool {
         
         //item.damageItem(1, player);
         //world.spawnParticle("portal", par2 + par6Random.nextFloat(), par3 + 1.1F, par4 + par6Random.nextFloat(), mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
-		player.inventory.consumeInventoryItem(ForbiddenItems.ParadoxDust.itemID);
-		}  return item;
-    }
+        int sel = RANDOM.nextInt(8);
+        if (sel == 1) {
+        	player.inventory.consumeInventoryItem(ForbiddenItems.ParadoxDust.itemID);
+        } return item;
+        }
+		return item; 
+    } 
 	
 	public ItemStack onItemUse(ItemStack item, World world, EntityPlayer player)
     {
@@ -101,7 +106,7 @@ public class ItemParadoxStaff extends ItemTool {
         if(!world.isRemote)
                 world.addWeatherEffect(new EntityLightningBolt(world, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord));
         
-        item.damageItem(1, player);
+        //item.damageItem(1, player);
         //world.spawnParticle("portal", par2 + par6Random.nextFloat(), par3 + 1.1F, par4 + par6Random.nextFloat(), mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
         return item;
     }

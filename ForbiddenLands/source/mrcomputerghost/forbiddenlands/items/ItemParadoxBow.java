@@ -59,7 +59,7 @@ public class ItemParadoxBow extends Item
         if (player.inventory.hasItem(Item.arrow.itemID)) projectileShot = 1;
         else if (player.inventory.hasItem(Item.skull.itemID)) projectileShot = 2;
         if (projectileShot > 0) hasProjectile = true;
-        if (flag || player.inventory.hasItem(Item.snowball.itemID))
+        if (flag || player.inventory.hasItem(Item.arrow.itemID))
         {
             float f = (float)j / 20.0F;
             f = (f * f + f * 2.0F) / 3.0F;
@@ -74,8 +74,8 @@ public class ItemParadoxBow extends Item
                 f = 1.0F;
             }
 
-            EntitySnowball entityarrow = new EntitySnowball(par2World, player);
-
+            EntityArrow entityarrow = new EntityArrow(par2World, player, f);
+            entityarrow.setDamage(-999);
             /**if (f == 1.0F)
             {
                 entityarrow.setIsCritical(true);
@@ -83,17 +83,17 @@ public class ItemParadoxBow extends Item
 
             int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
 
-            /**if (k > 0)
+            if (k > 0)
             {
-                entityarrow.setDamage(entityarrow.getDamage() + (double)k * 0.5D + 0.5D);
-            }**/
+                entityarrow.setDamage(entityarrow.getDamage() - 999);
+            }
 
             int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
 
-            /**if (l > 0)
+            if (l > 0)
             {
-                entityarrow.setKnockbackStrength(l);
-            }**/
+                entityarrow.setKnockbackStrength(1);
+            }
 
             if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
             {
@@ -105,25 +105,23 @@ public class ItemParadoxBow extends Item
 
             if (flag)
             {
-                //entityarrow.canBePickedUp = 2;
+                entityarrow.canBePickedUp = 2;
             }
             else
             {
-                if (projectileShot == 1) player.inventory.consumeInventoryItem(Item.arrow.itemID);
-                if (projectileShot == 2) player.inventory.consumeInventoryItem(Item.skull.itemID);
+                player.inventory.consumeInventoryItem(Item.arrow.itemID);
+                
             }
             EntityWitherSkull skull = new EntityWitherSkull(par2World);
             if (!par2World.isRemote)
             {
             	
-                if (projectileShot == 1) {
+                
                 	par2World.spawnEntityInWorld(entityarrow);
                 	player.mountEntity(entityarrow);
                 	entityarrow.setInvisible(true);
-                }
-                else if (projectileShot == 2) {
-                	par2World.spawnEntityInWorld(skull);
-                }                	
+                	entityarrow.shouldRiderSit();
+                                	
             }
         }
     }
@@ -208,7 +206,7 @@ public class ItemParadoxBow extends Item
     	
         if (!world.isRemote){
             EntityPlayer entityplayer = (EntityPlayer) entity;
-            EntityArrow entityarrow = new EntityArrow(world, entityplayer, f * 2.0F);
+            EntityArrow entityarrow = new EntityArrow(world, entityplayer, f);
             if (entityplayer.ridingEntity == entityarrow && entityplayer !=null); {
             	entityplayer.fallDistance = 0;
             }

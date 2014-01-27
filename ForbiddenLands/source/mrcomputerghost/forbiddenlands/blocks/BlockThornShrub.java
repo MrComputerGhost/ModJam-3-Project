@@ -14,20 +14,21 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Icon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockThornShrub extends Block
 {
-	public EnumMobType triggerMobType;
-	public BlockThornShrub(int par1, String texture, EnumMobType par4EnumMobType) 
+	private static final Random RANDOM = new Random();
+	public BlockThornShrub(int par1, String texture) 
     {
             super(par1, Material.wood);
             setCreativeTab(CreativeTabs.tabBlock);
-            this.triggerMobType = par4EnumMobType;
     }
 
     public int idDropped(int par1, Random par2Random, int par3)
@@ -115,15 +116,35 @@ public class BlockThornShrub extends Block
      * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
    
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity, EntityPlayer player)
-    {
-    	par5Entity.attackEntityFrom(DamageSource.causeThornsDamage(par5Entity), 1.5F);
-    }
+       public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+       {
+           par5Entity.attackEntityFrom(new DamageThornShrub(par5Entity), 0.25F);
+           par1World.playRecord("nyancat", par2, par3, par4);
+       }
+
     
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
             this.blockIcon = par1IconRegister.registerIcon("forbiddenlands:thorn_shrub");
+    }
+    
+    public static class DamageThornShrub extends DamageSource
+    {
+            private Entity p;
+
+            public DamageThornShrub(Entity par5Entity)
+            {
+                    super("thornshrub");
+                    this.p = par5Entity;
+            }
+
+            @Override
+            public ChatMessageComponent getDeathMessage(EntityLivingBase par1EntityLivingBase)
+            {
+            	int sel = RANDOM.nextInt(4) + 1;
+                return ChatMessageComponent.createFromText(Minecraft.getMinecraft().thePlayer.username + " " + StatCollector.translateToLocal("death.message" + sel));
+            }
     }
 
 

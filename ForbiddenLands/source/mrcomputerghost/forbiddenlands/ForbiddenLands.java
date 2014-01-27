@@ -51,7 +51,7 @@ import net.minecraft.util.Icon;
 
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.7")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.9")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
@@ -101,7 +101,7 @@ public class ForbiddenLands
         ForbiddenRecipes.initRecipes();
         logger.info("Initialized " + "Forbidden Lands Recipes");
         
-        LanguageRegistry.instance().addStringLocalization("itemGroup.ForbiddenLands", "ForbiddenLands");
+        
         
 		//Biomes
 		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("Forbidden Lands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
