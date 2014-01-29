@@ -14,34 +14,35 @@ import net.minecraft.entity.player.EntityPlayer;
 public class ItemPureBark extends Item {
 
 	public ItemPureBark(int par1) {
-        super(par1);
-        this.setHasSubtypes(true);
-        this.setMaxDamage(0);
-        this.setCreativeTab(CreativeTabs.tabMaterials);
+		super(par1);
+		this.setHasSubtypes(true);
+		this.setMaxDamage(0);
+		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
-		
+
 	@Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister) {
-            this.itemIcon = par1IconRegister.registerIcon("forbiddenlands:purebark");
-    }
-	
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-    {
-        Boolean bob = false;
-        bob = true;
-        while(bob) {
-        String input = JOptionPane.showInputDialog("What is your name?");
-        
-        if (input != null) { 
-        	JOptionPane.showMessageDialog(null, "You suck " + input);
-        	bob = false;
-        }
-        else {
-        	bob = false;
-        	bob = true;
-        }}
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister
+				.registerIcon("forbiddenlands:purebark");
+	}
+
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
+			EntityPlayer par3EntityPlayer) {
+		Boolean bob = false;
+		bob = true;
+		while (bob) {
+			String input = JOptionPane.showInputDialog("What is your name?");
+
+			if (input != null) {
+				JOptionPane.showMessageDialog(null, "You suck " + input);
+				bob = false;
+			} else {
+				bob = false;
+				bob = true;
+			}
+		}
 		return par1ItemStack;
-    }
-	
+	}
+
 }

@@ -10,7 +10,6 @@ import net.minecraft.tileentity.TileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TileEntityTombStone extends TileEntity
-{
-	 
+public class TileEntityTombStone extends TileEntity {
+
 }

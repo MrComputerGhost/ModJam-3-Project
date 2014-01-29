@@ -17,6 +17,7 @@ import mrcomputerghost.forbiddenlands.dim.ForbiddenDimensions;
 import mrcomputerghost.forbiddenlands.handlers.CraftingHandler;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
+import mrcomputerghost.forbiddenlands.worldgen.TreeGenerator;
 import mrcomputerghost.forbiddenlands.worldgen.WorldGenGrave;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -50,70 +51,88 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 
-
-
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.9")
-@NetworkMod (clientSideRequired = true, serverSideRequired = false)
-public class ForbiddenLands 
-{	
+@Mod(modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.9")
+@NetworkMod(clientSideRequired = true, serverSideRequired = false)
+public class ForbiddenLands {
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
-			
+
 	@Instance("ForbiddenLands")
 	public static ForbiddenLands instance;
-        
+
 	@SidedProxy(clientSide = "mrcomputerghost.forbiddenlands.ClientProxy", serverSide = "mrcomputerghost.forbiddenlands.CommonProxy")
-	public static CommonProxy proxy; 
-    
-	public static CreativeTabs ForbiddenTab = new ForbiddenCreativeTab(CreativeTabs.getNextID(), "Forbidden Lands");
-	
-	//Biomes
+	public static CommonProxy proxy;
+
+	public static CreativeTabs ForbiddenTab = new ForbiddenCreativeTab(
+			CreativeTabs.getNextID(), "Forbidden Lands");
+
+	// Biomes
 	public static BiomeGenBase ForbiddenLandsBiome;
 	public static BiomeGenBase ThornForest;
 	public static BiomeGenBase Wasted;
 	public static BiomeGenBase EnchantedForest;
 	public static BiomeGenBase EnchantedForestHills;
 	public static BiomeGenBase Graveyard;
-	public static BiomeGenBase ForbiddenHills;  
-	
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
+	public static BiomeGenBase ForbiddenHills;
 
-        
-		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-        config.load();
-		
-        ForbiddenBlocks.DeathWoodDefaultID = config.getBlock("Death Logs", 4042).getInt();
-        ForbiddenBlocks.DeathLeavesDefaultID = config.getBlock("Death Leaves", 4043).getInt();
-        ForbiddenBlocks.DeathPlanksDefaultID = config.getBlock("Death Planks", 4044).getInt();
-        ForbiddenBlocks.DeadGrassDefaultID = config.getBlock("Dead Grass", 4045).getInt();
-        ForbiddenBlocks.ThornShrubDefaultID = config.getBlock("Thorn Shrub", 4046).getInt();
-        ForbiddenBlocks.ThornsDefaultID = config.getBlock("Thorns", 4047).getInt();
-        ForbiddenBlocks.CorruptedBarkDefaultID = config.getBlock("Corrupted Bark", 4048).getInt();
-        BiomeGenThorns.useOldThornBushes = config.get("Biome Stuff", "Use Old Thorn Bushes", false).getBoolean(false);
-        WorldGenGrave.useCustomGrave = config.get("Biome Stuff", "Use Custom Grave", true).getBoolean(true);
-        
-        config.save();
-        
-        ForbiddenBlocks.initBlocks();
-        logger.info("Initialized " + "Forbidden Lands Blocks");
-        ForbiddenItems.initItems();
-        logger.info("Initialized " + "Forbidden Lands Items");
-        ForbiddenRecipes.initRecipes();
-        logger.info("Initialized " + "Forbidden Lands Recipes");
-        ForbiddenDimensions.initDims();
-        
-        
-		//Biomes
-		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("Forbidden Lands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
-		ThornForest = new BiomeGenThorns(43).setColor(616363).setBiomeName("Thorn Forest").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.3F).setDisableRain();
-		Wasted = new BiomeGenWasted(44).setColor(6163).setBiomeName("Wasteland").func_76733_a(9154376).setMinMaxHeight(-0.2F, -0.1F).setDisableRain();
-		EnchantedForest = new BiomeGenEnchantedForest(45).setColor(10000).setBiomeName("Enchanted Forest").setMinMaxHeight(-0.2F, 0.2F).setDisableRain();
-		EnchantedForestHills = new BiomeGenEnchantedForest(46).setColor(10000).setBiomeName("Enchanted Forest Hills").setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
-		Graveyard = new BiomeGenGraves(47).setColor(99999).setBiomeName("Graveyard").setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
-		ForbiddenHills = new BiomeGenEvilForest(48).setColor(616363).setBiomeName("Forbidden Forest Hills").setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
-		
-		GameRegistry.addBiome(ForbiddenLandsBiome);
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+
+		Configuration config = new Configuration(
+				event.getSuggestedConfigurationFile());
+		config.load();
+
+		ForbiddenBlocks.DeathWoodDefaultID = config
+				.getBlock("Death Logs", 4042).getInt();
+		ForbiddenBlocks.DeathLeavesDefaultID = config.getBlock("Death Leaves",
+				4043).getInt();
+		ForbiddenBlocks.DeathPlanksDefaultID = config.getBlock("Death Planks",
+				4044).getInt();
+		ForbiddenBlocks.DeadGrassDefaultID = config
+				.getBlock("Dead Grass", 4045).getInt();
+		ForbiddenBlocks.ThornShrubDefaultID = config.getBlock("Thorn Shrub",
+				4046).getInt();
+		ForbiddenBlocks.ThornsDefaultID = config.getBlock("Thorns", 4047)
+				.getInt();
+		ForbiddenBlocks.CorruptedBarkDefaultID = config.getBlock(
+				"Corrupted Bark", 4048).getInt();
+		BiomeGenThorns.useOldThornBushes = config.get("Biome Stuff",
+				"Use Old Thorn Bushes", false).getBoolean(false);
+		WorldGenGrave.useCustomGrave = config.get("Biome Stuff",
+				"Use Custom Grave", true).getBoolean(true);
+
+		config.save();
+
+		ForbiddenBlocks.initBlocks();
+		logger.info("Initialized " + "Forbidden Lands Blocks");
+		ForbiddenItems.initItems();
+		logger.info("Initialized " + "Forbidden Lands Items");
+		ForbiddenRecipes.initRecipes();
+		logger.info("Initialized " + "Forbidden Lands Recipes");
+
+		// Biomes
+		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363)
+				.setBiomeName("Forbidden Lands").func_76733_a(9154376)
+				.setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
+		ThornForest = new BiomeGenThorns(43).setColor(616363)
+				.setBiomeName("Thorn Forest").func_76733_a(9154376)
+				.setMinMaxHeight(-0.2F, 0.3F).setDisableRain();
+		Wasted = new BiomeGenWasted(44).setColor(6163)
+				.setBiomeName("Wasteland").func_76733_a(9154376)
+				.setMinMaxHeight(-0.2F, -0.1F).setDisableRain();
+		EnchantedForest = new BiomeGenEnchantedForest(45).setColor(10000)
+				.setBiomeName("Enchanted Forest").setMinMaxHeight(-0.2F, 0.2F)
+				.setDisableRain();
+		EnchantedForestHills = new BiomeGenEnchantedForest(46).setColor(10000)
+				.setBiomeName("Enchanted Forest Hills")
+				.setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
+		Graveyard = new BiomeGenGraves(47).setColor(99999)
+				.setBiomeName("Graveyard").setMinMaxHeight(-0.1F, 0.1F)
+				.setDisableRain();
+		ForbiddenHills = new BiomeGenEvilForest(48).setColor(616363)
+				.setBiomeName("Forbidden Forest Hills")
+				.setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
+
+		/**GameRegistry.addBiome(ForbiddenLandsBiome);
 		GameRegistry.addBiome(ThornForest);
 		GameRegistry.addBiome(Wasted);
 		GameRegistry.addBiome(EnchantedForest);
@@ -125,7 +144,7 @@ public class ForbiddenLands
 		BiomeManager.addSpawnBiome(Wasted);
 		BiomeManager.addSpawnBiome(EnchantedForest);
 		BiomeManager.addSpawnBiome(EnchantedForestHills);
-		BiomeManager.addSpawnBiome(Graveyard);
+		BiomeManager.addSpawnBiome(Graveyard);**/
 		BiomeManager.addVillageBiome(EnchantedForest, true);
 		BiomeManager.addVillageBiome(EnchantedForestHills, true);
 		BiomeManager.addVillageBiome(Wasted, false);
@@ -134,49 +153,51 @@ public class ForbiddenLands
 		BiomeManager.addStrongholdBiome(EnchantedForestHills);
 		BiomeManager.addStrongholdBiome(Graveyard);
 		BiomeDictionary.registerAllBiomesAndGenerateEvents();
-		
-		
-		
+
 	}
-	
+
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.registerRenderThings();
 	}
-	
+
 	@EventHandler
-    public void load(FMLInitializationEvent event)
-    {
-		/**Forbidden = new Achievement(35, "ForbiddenAchievement", 0, 0, ForbiddenItems.Rider, null).registerAchievement();
-
-		this.addAchievementName("ForbiddenAchievement", "I'll Ride You...");
-		this.addAchievementDesc("ForbiddenAchievement", "Ride another player");
-		
-		GameRegistry.registerCraftingHandler(new CraftingHandler());**/
-    }
-    
-	/**private void addAchievementName(String ach, String name)
-	{
-	LanguageRegistry.instance().addStringLocalization("achievement." + ach, "en_US", name);
+	public void load(FMLInitializationEvent event) {
+		ForbiddenDimensions.initDims();
+		//GameRegistry.registerWorldGenerator(new TreeGenerator());
+		/**
+		 * Forbidden = new Achievement(35, "ForbiddenAchievement", 0, 0,
+		 * ForbiddenItems.Rider, null).registerAchievement();
+		 * 
+		 * this.addAchievementName("ForbiddenAchievement", "I'll Ride You...");
+		 * this.addAchievementDesc("ForbiddenAchievement",
+		 * "Ride another player");
+		 * 
+		 * GameRegistry.registerCraftingHandler(new CraftingHandler());
+		 **/
 	}
 
-	private void addAchievementDesc(String ach, String desc)
-	{
-	LanguageRegistry.instance().addStringLocalization("achievement." + ach + ".desc", "en_US", desc);
-	}**/
-	
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
-    	logger.info("Forbidden Lands Mod Loaded Up!");
-    }
-    
-    
-	public ForbiddenLands() 
-	{
-		
-		//JOptionPane.showMessageDialog(null, "Warning: \n This version of Forbidden Lands is very unstable \n and will most likely break. \n You have been warned.", null, JOptionPane.WARNING_MESSAGE);
-		
+	/**
+	 * private void addAchievementName(String ach, String name) {
+	 * LanguageRegistry.instance().addStringLocalization("achievement." + ach,
+	 * "en_US", name); }
+	 * 
+	 * private void addAchievementDesc(String ach, String desc) {
+	 * LanguageRegistry.instance().addStringLocalization("achievement." + ach +
+	 * ".desc", "en_US", desc); }
+	 **/
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		logger.info("Forbidden Lands Mod Loaded Up!");
 	}
-	
+
+	public ForbiddenLands() {
+
+		// JOptionPane.showMessageDialog(null,
+		// "Warning: \n This version of Forbidden Lands is very unstable \n and will most likely break. \n You have been warned.",
+		// null, JOptionPane.WARNING_MESSAGE);
+
+	}
+
 }

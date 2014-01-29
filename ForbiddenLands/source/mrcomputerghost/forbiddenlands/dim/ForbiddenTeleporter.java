@@ -104,21 +104,21 @@ public class ForbiddenTeleporter extends Teleporter {
 					double d6 = (double) l1 + 0.5D - par1Entity.posZ;
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2) {
 						/** change this block **/
-						if (this.worldServerInstance.getBlockId(k1, i2, l1) == ForbiddenBlocks.FBPortal.blockID) {
-							/** change this block **/
-							while (this.worldServerInstance.getBlockId(k1,
-									i2 - 1, l1) == ForbiddenBlocks.FBPortal.blockID) {
-								--i2;
-							}
-							d4 = (double) i2 + 0.5D - par1Entity.posY;
-							double d7 = d5 * d5 + d4 * d4 + d6 * d6;
-							if (d3 < 0.0D || d7 < d3) {
-								d3 = d7;
-								i = k1;
-								j = i2;
-								k = l1;
-							}
+
+						/** change this block **/
+						while (this.worldServerInstance.getBlockId(k1, i2 - 1,
+								l1) == ForbiddenBlocks.FBPortal.blockID) {
+							--i2;
 						}
+						d4 = (double) i2 + 0.5D - par1Entity.posY;
+						double d7 = d5 * d5 + d4 * d4 + d6 * d6;
+						if (d3 < 0.0D || d7 < d3) {
+							d3 = d7;
+							i = k1;
+							j = i2;
+							k = l1;
+						}
+
 					}
 				}
 			}
