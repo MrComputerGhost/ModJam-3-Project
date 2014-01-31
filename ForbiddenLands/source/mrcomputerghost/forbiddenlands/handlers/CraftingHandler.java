@@ -12,10 +12,9 @@ public class CraftingHandler implements ICraftingHandler {
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item,
 			IInventory craftMatrix) {
-		/**
-		 * if (item.itemID == ForbiddenItems.Rider.itemID) {
-		 * player.addStat(ForbiddenLands.Forbidden, 1); }
-		 **/
+		/**if (item.itemID == ForbiddenItems.Rider.itemID) {
+			player.addStat(ForbiddenLands.Forbidden, 1);
+		}**/
 
 	}
 

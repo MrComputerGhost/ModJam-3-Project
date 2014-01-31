@@ -2,22 +2,23 @@ package mrcomputerghost.forbiddenlands.worldgen;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class WorldGenGrave extends WorldGenerator implements IWorldGenerator {
-
+public class WorldGenGrave extends WorldGenerator {
+	
 	int customGraveID;
 	public static boolean useCustomGrave = true;
 
 	public int[] GetValidSpawnBlocks() {
-		return new int[] { Block.mycelium.blockID };
+		return new int[] { Block.dirt.blockID, Block.grass.blockID,
+				Block.mycelium.blockID };
 	}
-
+	
+	
+	
 	public boolean LocationIsValidSpawn(World world, int i, int j, int k) {
 		int distanceToAir = 0;
 		int checkID = world.getBlockId(i, j, k);
@@ -49,10 +50,8 @@ public class WorldGenGrave extends WorldGenerator implements IWorldGenerator {
 	}
 
 	public WorldGenGrave() {
-		if (useCustomGrave)
-			customGraveID = ForbiddenBlocks.TombStone.blockID;
-		else if (!useCustomGrave)
-			customGraveID = Block.stoneDoubleSlab.blockID;
+		if (useCustomGrave) customGraveID = ForbiddenBlocks.TombStone.blockID;
+		else if (!useCustomGrave) customGraveID = Block.stoneDoubleSlab.blockID;
 	}
 
 	public boolean generate(World world, Random rand, int i, int j, int k) {
@@ -63,7 +62,7 @@ public class WorldGenGrave extends WorldGenerator implements IWorldGenerator {
 				|| !LocationIsValidSpawn(world, i, j, k + 2)) {
 			return false;
 		}
-
+		
 		world.setBlock(i + 0, j - 1, k + 0, Block.slowSand.blockID);
 		world.setBlock(i + 0, j - 1, k + 1, Block.slowSand.blockID);
 		world.setBlock(i + 0, j - 1, k + 2, Block.slowSand.blockID);
@@ -79,16 +78,8 @@ public class WorldGenGrave extends WorldGenerator implements IWorldGenerator {
 		world.setBlock(i - 2, j - 1, k + 0, Block.slowSand.blockID);
 		world.setBlock(i - 2, j - 1, k + 1, Block.slowSand.blockID);
 		world.setBlock(i - 2, j - 1, k + 2, Block.slowSand.blockID);
-		world.setBlock(i - 2, j + 0, k + 2, this.customGraveID);
-		;
+		world.setBlock(i - 2, j + 0, k + 2, this.customGraveID);;
 
 		return true;
-	}
-
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		// TODO Auto-generated method stub
-
 	}
 }

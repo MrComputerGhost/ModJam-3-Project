@@ -9,16 +9,15 @@ import net.minecraft.creativetab.CreativeTabs;
 public class ItemParadoxShard extends Item {
 
 	public ItemParadoxShard(int par1) {
-		super(par1);
-		this.setHasSubtypes(true);
-		this.setMaxDamage(0);
+        super(par1);
+        this.setHasSubtypes(true);
+        this.setMaxDamage(0);
 	}
-
+		
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		this.itemIcon = par1IconRegister
-				.registerIcon("forbiddenlands:paradoxshard");
-	}
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister par1IconRegister) {
+            this.itemIcon = par1IconRegister.registerIcon("forbiddenlands:paradoxshard");
+    }
 
 }

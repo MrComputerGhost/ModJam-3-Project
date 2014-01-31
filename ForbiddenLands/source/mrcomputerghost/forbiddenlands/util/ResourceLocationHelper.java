@@ -8,5 +8,6 @@ public class ResourceLocationHelper {
 	public static ResourceLocation getResourceLactaion(String path) {
 		return new ResourceLocation(Reference.MOD_ID.toLowerCase(), path);
 	}
-
+	
+	
 }
