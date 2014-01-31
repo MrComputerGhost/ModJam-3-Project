@@ -51,10 +51,11 @@ import net.minecraft.util.Icon;
 
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.9")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "4.2")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
+	
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
 			
 	@Instance("ForbiddenLands")
