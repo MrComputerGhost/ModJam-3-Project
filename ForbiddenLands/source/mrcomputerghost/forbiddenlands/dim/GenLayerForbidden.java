@@ -20,28 +20,32 @@ import net.minecraft.world.gen.layer.GenLayerZoom;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
-public abstract class GenLayerForbidden extends GenLayer {
-	public GenLayerForbidden(long seed) {
-		super(seed);
-	}
+public abstract class GenLayerForbidden extends GenLayer
+{
+public GenLayerForbidden(long seed) {
+super(seed);
+}
 
-	public static GenLayer[] makeTheWorld(long seed) {
+public static GenLayer[] makeTheWorld(long seed) {
 
-		GenLayer biomes = new GenLayerBiomesForbidden(1L);
+GenLayer biomes = new GenLayerBiomesForbidden(1L);
 
-		// more GenLayerZoom = bigger biomes
-		biomes = new GenLayerZoom(1000L, biomes);
-		biomes = new GenLayerZoom(1001L, biomes);
-		biomes = new GenLayerZoom(1002L, biomes);
-		biomes = new GenLayerZoom(1003L, biomes);
-		biomes = new GenLayerZoom(1004L, biomes);
-		biomes = new GenLayerZoom(1005L, biomes);
+// more GenLayerZoom = bigger biomes
+biomes = new GenLayerZoom(1000L, biomes);
+biomes = new GenLayerZoom(1001L, biomes);
+biomes = new GenLayerZoom(1002L, biomes);
+biomes = new GenLayerZoom(1003L, biomes);
+biomes = new GenLayerZoom(1004L, biomes);
+biomes = new GenLayerZoom(1005L, biomes);
 
-		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 
-		biomes.initWorldGenSeed(seed);
-		genlayervoronoizoom.initWorldGenSeed(seed);
 
-		return new GenLayer[] { biomes, genlayervoronoizoom };
-	}
+
+GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
+
+biomes.initWorldGenSeed(seed);
+genlayervoronoizoom.initWorldGenSeed(seed);
+
+return new GenLayer[] {biomes, genlayervoronoizoom};
+}
 }
