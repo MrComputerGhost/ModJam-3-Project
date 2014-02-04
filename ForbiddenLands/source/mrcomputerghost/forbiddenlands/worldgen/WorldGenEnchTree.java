@@ -115,9 +115,7 @@ public class WorldGenEnchTree extends WorldGenerator
 
                         Block block = Block.blocksList[j1];
 
-                        if (block == null || 
-                            block.isAirBlock(par1World, par3, par4 + i2, par5) || 
-                            block.isLeaves(par1World, par3, par4 + i2, par5))
+                        if (block == null || block.isAirBlock(par1World, par3, par4 + i2, par5) || block.isLeaves(par1World, par3, par4 + i2, par5))
                         {
                             this.setBlockAndMetadata(par1World, par3, par4 + i2, par5, ForbiddenBlocks.EnchBark.blockID, 2);
                         }

@@ -1,8 +1,10 @@
 package mrcomputerghost.forbiddenlands.blocks;
 
 import mrcomputerghost.forbiddenlands.ForbiddenLands;
+import mrcomputerghost.forbiddenlands.tileentities.TileEntityTombStone;
 import net.minecraft.block.Block;
 import net.minecraft.block.EnumMobType;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -60,7 +62,7 @@ public class ForbiddenBlocks {
 		EnchBark = new BlockEnchantedBark(4051, "EnchBark").setUnlocalizedName("EnchBark").setHardness(1.0F).setStepSound(Block.soundPowderFootstep).setResistance(1.0F).setCreativeTab(ForbiddenLands.ForbiddenTab);
 		EnchPlanks = new BlockEnchPlanks(4052, "EnchPlanks").setUnlocalizedName("EnchPlanks").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations);
 		EnchLeaves = new BlockEnchLeaves(4053, "EnchLeaves").setUnlocalizedName("EnchLeaves").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations);
-		TombStone = new BlockTombStone(4054, false).setUnlocalizedName("TombStone").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations).setTextureName("forbiddenlands:grave");
+		TombStone = new BlockTombStone(4054, Material.rock).setUnlocalizedName("TombStone").setHardness(1.0F).setStepSound(Block.soundAnvilFootstep).setResistance(1.0F).setCreativeTab(CreativeTabs.tabDecorations).setTextureName("forbiddenlands:grave");
 		
 		GameRegistry.registerBlock(DeathWood, "DeathWood");
 		GameRegistry.registerBlock(DeathLeaves, "DeathLeaves");
@@ -74,6 +76,7 @@ public class ForbiddenBlocks {
 		GameRegistry.registerBlock(EnchPlanks, "EnchPlanks");
 		GameRegistry.registerBlock(EnchLeaves, "EnchLeaves");
 		GameRegistry.registerBlock(TombStone, "TombStone");
+		GameRegistry.registerTileEntity(TileEntityTombStone.class, "TileEntityTombStone");
 		
 		LanguageRegistry.addName(DeathWood, "Death Log");
 		LanguageRegistry.addName(DeathLeaves, "Death Leaves");
