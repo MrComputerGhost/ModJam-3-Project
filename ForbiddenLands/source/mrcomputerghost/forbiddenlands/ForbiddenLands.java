@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.Configuration;
@@ -51,10 +52,11 @@ import net.minecraft.util.Icon;
 
 
 
-@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "3.9")
+@Mod (modid = "ForbiddenLands", name = "Forbidden Lands", version = "4.4")
 @NetworkMod (clientSideRequired = true, serverSideRequired = false)
 public class ForbiddenLands 
 {
+	
 	public static final Logger logger = Logger.getLogger("ForbiddenLands");
 			
 	@Instance("ForbiddenLands")
@@ -101,7 +103,7 @@ public class ForbiddenLands
         ForbiddenRecipes.initRecipes();
         logger.info("Initialized " + "Forbidden Lands Recipes");
         
-        
+        AchievementPage.registerAchievementPage(new ForbiddenAchievementPage());
         
 		//Biomes
 		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("Forbidden Lands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
@@ -133,36 +135,22 @@ public class ForbiddenLands
 		BiomeManager.addStrongholdBiome(EnchantedForestHills);
 		BiomeManager.addStrongholdBiome(Graveyard);
 		BiomeDictionary.registerAllBiomesAndGenerateEvents();
-		
+		proxy.registerRenderers();
 		
 		
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		proxy.registerRenderThings();
+		
 	}
 	
 	@EventHandler
     public void load(FMLInitializationEvent event)
     {
-		/**Forbidden = new Achievement(35, "ForbiddenAchievement", 0, 0, ForbiddenItems.Rider, null).registerAchievement();
-
-		this.addAchievementName("ForbiddenAchievement", "I'll Ride You...");
-		this.addAchievementDesc("ForbiddenAchievement", "Ride another player");
 		
-		GameRegistry.registerCraftingHandler(new CraftingHandler());**/
     }
     
-	/**private void addAchievementName(String ach, String name)
-	{
-	LanguageRegistry.instance().addStringLocalization("achievement." + ach, "en_US", name);
-	}
-
-	private void addAchievementDesc(String ach, String desc)
-	{
-	LanguageRegistry.instance().addStringLocalization("achievement." + ach + ".desc", "en_US", desc);
-	}**/
 	
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)

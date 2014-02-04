@@ -8,6 +8,7 @@ import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mrcomputerghost.forbiddenlands.util.ForbiddenNBT;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -65,34 +66,36 @@ public class ItemParadoxStaff extends ItemTool {
     }
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
     {
-		if (player.inventory.hasItem(ForbiddenItems.ParadoxDust.itemID)) {
 		final double RANGE = 100;
-        
-        Vec3 lookdir = player.getLook(1);
-        
+        Vec3 lookdir = player.getLook(1);  
         Vec3 src = world.getWorldVec3Pool().getVecFromPool(player.posX+lookdir.xCoord, player.posY+lookdir.yCoord+player.getEyeHeight(), player.posZ+lookdir.zCoord);
         Vec3 dst = src.addVector(lookdir.xCoord*RANGE, lookdir.yCoord*RANGE, lookdir.zCoord*RANGE);
-        
         MovingObjectPosition mop = world.rayTraceBlocks_do_do(src, dst, true, true);
-        if(mop == null)
-                return item;
-        
+        if(mop == null) return item;
+				
+		
+		
+		//if ((player.inventory.hasItem(ForbiddenItems.ParadoxDust.itemID)) || (player.capabilities.isCreativeMode)) {
+		
         if(!world.isRemote)
-                world.addWeatherEffect(new EntityLightningBolt(world, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord));
-        
+            //world.addWeatherEffect(new EntityLightningBolt(world, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord));
+        	if (!player.isSneaking()) world.createExplosion(player, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord, 15.0F, false);
+        	if (player.isSneaking()) world.createExplosion(player, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord, 10.0F, true);
         //item.damageItem(1, player);
         //world.spawnParticle("portal", par2 + par6Random.nextFloat(), par3 + 1.1F, par4 + par6Random.nextFloat(), mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
-        int sel = RANDOM.nextInt(8);
-        if (sel == 1) {
-        	player.inventory.consumeInventoryItem(ForbiddenItems.ParadoxDust.itemID);
-        } return item;
-        }
-		return item; 
-    } 
+        //int sel = RANDOM.nextInt(8);
+        //if (sel == 1) {
+        //	player.inventory.consumeInventoryItem(ForbiddenItems.ParadoxDust.itemID);
+        //}
+		return item;
+      }
+		
+     
 	
 	public ItemStack onItemUse(ItemStack item, World world, EntityPlayer player)
     {
-		final double RANGE = 100;
+		
+		/**final double RANGE = 100;
         
         Vec3 lookdir = player.getLook(1);
         
@@ -108,7 +111,8 @@ public class ItemParadoxStaff extends ItemTool {
         
         //item.damageItem(1, player);
         //world.spawnParticle("portal", par2 + par6Random.nextFloat(), par3 + 1.1F, par4 + par6Random.nextFloat(), mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
-        return item;
+        return item;**/
+		return item;
     }
 	
 	public boolean isFull3D()
