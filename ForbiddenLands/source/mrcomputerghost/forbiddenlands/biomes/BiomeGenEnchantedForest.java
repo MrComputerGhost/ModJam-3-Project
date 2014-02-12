@@ -25,9 +25,9 @@ public class BiomeGenEnchantedForest extends BiomeGenBase
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityBat.class, 8, 4, 8));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityZombie.class, 2, 4, 8));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityCow.class, 5, 5, 5));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityBat.class, 8, 1, 8));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityZombie.class, 1, 1, 1));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 1, 1, 3));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 1, 1, 1));
     }
     
