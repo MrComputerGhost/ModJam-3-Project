@@ -1,7 +1,10 @@
 package mrcomputerghost.forbiddenlands.tileentities;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
@@ -14,18 +17,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TileEntityTombStone extends TileEntity
 {
 	public String name;
-
+	
     public boolean isDirty = false; 
 	
     public TileEntityTombStone()
     {
         this.name = "Player";
+        
     }
 	
     @Override
     public void updateEntity()
     {
-        if (isDirty)
+    	super.updateEntity();
+    	if (isDirty)
         {
             isDirty = false;
             worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);   

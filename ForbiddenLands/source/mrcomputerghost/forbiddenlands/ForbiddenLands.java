@@ -1,12 +1,16 @@
 package mrcomputerghost.forbiddenlands;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
+import mrcomputerghost.forbiddenlands.biomes.BiomeGenCorruptedForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEnchantedForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenEvilForest;
 import mrcomputerghost.forbiddenlands.biomes.BiomeGenGraves;
@@ -16,6 +20,7 @@ import mrcomputerghost.forbiddenlands.blocks.ForbiddenBlocks;
 import mrcomputerghost.forbiddenlands.handlers.CraftingHandler;
 import mrcomputerghost.forbiddenlands.items.ForbiddenItems;
 import mrcomputerghost.forbiddenlands.lib.ForbiddenRecipes;
+import mrcomputerghost.forbiddenlands.world.dimension.WorldProviderForbidden;
 import mrcomputerghost.forbiddenlands.worldgen.WorldGenGrave;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -31,6 +36,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -66,15 +72,18 @@ public class ForbiddenLands
 	public static CommonProxy proxy; 
     
 	public static CreativeTabs ForbiddenTab = new ForbiddenCreativeTab(CreativeTabs.getNextID(), "Forbidden Lands");
-	
-	//Biomes
+	//Dimension ID's
+	public static int ForbiddenDimID = 42;
+	public static int ParadoxDimID = -42;
+	//Biomes  
+	public static BiomeGenBase CorruptedBiome;
 	public static BiomeGenBase ForbiddenLandsBiome;
 	public static BiomeGenBase ThornForest;
 	public static BiomeGenBase Wasted;
 	public static BiomeGenBase EnchantedForest;
 	public static BiomeGenBase EnchantedForestHills;
 	public static BiomeGenBase Graveyard;
-	public static BiomeGenBase ForbiddenHills;  
+	public static BiomeGenBase ForbiddenHills;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -87,7 +96,7 @@ public class ForbiddenLands
         ForbiddenBlocks.DeathWoodDefaultID = config.getBlock("Death Logs", 4042).getInt();
         ForbiddenBlocks.DeathLeavesDefaultID = config.getBlock("Death Leaves", 4043).getInt();
         ForbiddenBlocks.DeathPlanksDefaultID = config.getBlock("Death Planks", 4044).getInt();
-        ForbiddenBlocks.DeadGrassDefaultID = config.getBlock("Dead Grass", 4045).getInt();
+        ForbiddenBlocks.ParadoxBlockDefaultID = config.getBlock("Dead Grass", 4045).getInt();
         ForbiddenBlocks.ThornShrubDefaultID = config.getBlock("Thorn Shrub", 4046).getInt();
         ForbiddenBlocks.ThornsDefaultID = config.getBlock("Thorns", 4047).getInt();
         ForbiddenBlocks.CorruptedBarkDefaultID = config.getBlock("Corrupted Bark", 4048).getInt();
@@ -106,15 +115,16 @@ public class ForbiddenLands
         AchievementPage.registerAchievementPage(new ForbiddenAchievementPage());
         
 		//Biomes
-		ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("Forbidden Lands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
-		ThornForest = new BiomeGenThorns(43).setColor(616363).setBiomeName("Thorn Forest").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.3F).setDisableRain();
-		Wasted = new BiomeGenWasted(44).setColor(6163).setBiomeName("Wasteland").func_76733_a(9154376).setMinMaxHeight(-0.2F, -0.1F).setDisableRain();
-		EnchantedForest = new BiomeGenEnchantedForest(45).setColor(10000).setBiomeName("Enchanted Forest").setMinMaxHeight(-0.2F, 0.2F).setDisableRain();
-		EnchantedForestHills = new BiomeGenEnchantedForest(46).setColor(10000).setBiomeName("Enchanted Forest Hills").setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
-		Graveyard = new BiomeGenGraves(47).setColor(99999).setBiomeName("Graveyard").setMinMaxHeight(-0.1F, 0.1F).setDisableRain();
-		ForbiddenHills = new BiomeGenEvilForest(48).setColor(616363).setBiomeName("Forbidden Forest Hills").setMinMaxHeight(-0.3F, 0.3F).setDisableRain();
+		CorruptedBiome = new BiomeGenCorruptedForest(41).setColor(00000).setBiomeName("Corrupted Forest").setMinMaxHeight(0.5F, 1.0F).setDisableRain();
+        ForbiddenLandsBiome = new BiomeGenEvilForest(42).setColor(616363).setBiomeName("Forbidden Lands").func_76733_a(9154376).setMinMaxHeight(0.3F, 0.5F).setDisableRain();
+		ThornForest = new BiomeGenThorns(43).setColor(616363).setBiomeName("Thorn Forest").func_76733_a(9154376).setMinMaxHeight(0.3F, 0.5F).setDisableRain();
+		Wasted = new BiomeGenWasted(44).setColor(616363).setBiomeName("Wasteland\n(May Be Replaced!)").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.0F).setDisableRain();
+		EnchantedForest = new BiomeGenEnchantedForest(45).setColor(616363).setBiomeName("Enchanted Forest").setMinMaxHeight(0.2F, 0.5F).setDisableRain();
+		EnchantedForestHills = new BiomeGenEnchantedForest(46).setColor(616363).setBiomeName("Enchanted Forest Mountains").setMinMaxHeight(08F, 1.0F).setDisableRain();
+		Graveyard = new BiomeGenGraves(47).setColor(616363).setBiomeName("Graveyard").setMinMaxHeight(0.2F, 0.4F).setDisableRain();
+		ForbiddenHills = new BiomeGenEvilForest(48).setColor(616363).setBiomeName("Forbidden Forest Mountains").setMinMaxHeight(0.8F, 1.0F).setDisableRain();
 		
-		GameRegistry.addBiome(ForbiddenLandsBiome);
+		/**GameRegistry.addBiome(ForbiddenLandsBiome);
 		GameRegistry.addBiome(ThornForest);
 		GameRegistry.addBiome(Wasted);
 		GameRegistry.addBiome(EnchantedForest);
@@ -126,7 +136,9 @@ public class ForbiddenLands
 		BiomeManager.addSpawnBiome(Wasted);
 		BiomeManager.addSpawnBiome(EnchantedForest);
 		BiomeManager.addSpawnBiome(EnchantedForestHills);
-		BiomeManager.addSpawnBiome(Graveyard);
+		BiomeManager.addSpawnBiome(Graveyard);**/
+		GameRegistry.addBiome(CorruptedBiome);
+		BiomeManager.addSpawnBiome(CorruptedBiome);
 		BiomeManager.addVillageBiome(EnchantedForest, true);
 		BiomeManager.addVillageBiome(EnchantedForestHills, true);
 		BiomeManager.addVillageBiome(Wasted, false);
@@ -134,6 +146,7 @@ public class ForbiddenLands
 		BiomeManager.addStrongholdBiome(ForbiddenLandsBiome);
 		BiomeManager.addStrongholdBiome(EnchantedForestHills);
 		BiomeManager.addStrongholdBiome(Graveyard);
+		BiomeManager.addStrongholdBiome(CorruptedBiome);
 		BiomeDictionary.registerAllBiomesAndGenerateEvents();
 		proxy.registerRenderers();
 		
@@ -148,7 +161,9 @@ public class ForbiddenLands
 	@EventHandler
     public void load(FMLInitializationEvent event)
     {
-		
+		//Register WorldProvider for Dimension
+		DimensionManager.registerProviderType(ForbiddenDimID, WorldProviderForbidden.class, true);
+		DimensionManager.registerDimension(ForbiddenDimID, ForbiddenDimID);
     }
     
 	
