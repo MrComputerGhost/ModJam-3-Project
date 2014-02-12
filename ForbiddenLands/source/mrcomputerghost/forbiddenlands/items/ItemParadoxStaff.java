@@ -78,9 +78,9 @@ public class ItemParadoxStaff extends ItemTool {
 		//if ((player.inventory.hasItem(ForbiddenItems.ParadoxDust.itemID)) || (player.capabilities.isCreativeMode)) {
 		
         if(!world.isRemote)
-            //world.addWeatherEffect(new EntityLightningBolt(world, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord));
-        	if (!player.isSneaking()) world.createExplosion(player, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord, 15.0F, false);
-        	if (player.isSneaking()) world.createExplosion(player, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord, 10.0F, true);
+            world.addWeatherEffect(new EntityLightningBolt(world, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord));
+        	//if (!player.isSneaking()) world.createExplosion(player, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord, 15.0F, false);
+        	//if (player.isSneaking()) world.createExplosion(player, mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord, 10.0F, true);
         //item.damageItem(1, player);
         //world.spawnParticle("portal", par2 + par6Random.nextFloat(), par3 + 1.1F, par4 + par6Random.nextFloat(), mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
         //int sel = RANDOM.nextInt(8);
