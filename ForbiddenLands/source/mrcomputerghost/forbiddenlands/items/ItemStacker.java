@@ -50,9 +50,8 @@ public class ItemStacker extends Item {
 	
 	
 	
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
-		if (!world.isRemote) {
 		switch (par1ItemStack.getItemDamage())
         {
         case 0:
@@ -60,7 +59,7 @@ public class ItemStacker extends Item {
         	par1ItemStack.setItemName("\u00A7rRider - Ride Mode");
         	player.addChatMessage("Rider Mode Set To Ride");
         	break;
-        }}
+        }
 		return true;
     }
 	
